@@ -29,11 +29,11 @@
       background-color: #4fc3f7;
     }
     .highlight {
-      background-color: #FFF59D; /* Жовтий відтінок для підсвічування */
+      background-color: #FFF59D;
       transition: background-color 0.3s;
     }
     .hover-highlight {
-      background-color: #E0E0E0; /* Сірий відтінок при наведенні */
+      background-color: #E0E0E0;
       transition: background-color 0.3s;
     }
     #story span {
@@ -89,30 +89,15 @@
   <script>
     const audio = document.getElementById('audioPlayer');
     const textSpans = document.querySelectorAll('#story span');
-    let isTouchDevice = false;
 
-    // Перевірка, чи це сенсорний пристрій
-    try {
-      document.createEvent("TouchEvent");
-      isTouchDevice = true;
-    } catch (e) {
-      isTouchDevice = false;
-    }
-
-    // Функція для відтворення аудіо з певного моменту
-    function playFromTime(startTime) {
-      audio.currentTime = startTime;
-      audio.play();
-    }
-
-    // Відстежуємо поточний час аудіо для підсвічування
+    // Підсвічування під час відтворення
     audio.addEventListener('timeupdate', () => {
       const currentTime = audio.currentTime;
-      
+
       textSpans.forEach(span => {
         const startTime = parseFloat(span.getAttribute('data-start'));
-        const duration = 1.5; // Приблизна тривалість фрази (сек)
-        
+        const duration = 1.5;
+
         if (currentTime >= startTime && currentTime < startTime + duration) {
           span.classList.add('highlight');
         } else {
@@ -121,39 +106,38 @@
       });
     });
 
-    // Скидаємо підсвічування, коли аудіо закінчилось
     audio.addEventListener('ended', () => {
-      textSpans.forEach(span => {
-        span.classList.remove('highlight');
-      });
+      textSpans.forEach(span => span.classList.remove('highlight'));
     });
 
-    // Обробники подій для кожного фрагменту тексту
+    // Обробка кліку і дотику на span
     textSpans.forEach(span => {
       const startTime = parseFloat(span.getAttribute('data-start'));
-      
-      // Тільки для комп'ютерів (мишка)
-      if (!isTouchDevice) {
-        span.addEventListener('mouseenter', () => {
+
+      // Hover для миші
+      span.addEventListener('mouseenter', () => {
+        if (!('ontouchstart' in window)) {
           span.classList.add('hover-highlight');
-        });
-        
-        span.addEventListener('mouseleave', () => {
+        }
+      });
+
+      span.addEventListener('mouseleave', () => {
+        if (!('ontouchstart' in window)) {
           span.classList.remove('hover-highlight');
-        });
-      }
-      
-      // Загальна обробка кліку/дотику
-      span.addEventListener('click', () => {
+        }
+      });
+
+      // Єдиний обробник для обох платформ
+      const triggerPlayback = (e) => {
+        e.preventDefault();
         textSpans.forEach(s => s.classList.remove('highlight'));
         span.classList.add('highlight');
-        playFromTime(startTime);
-      });
-      
-      // Для смартфонів (дотики) - відключаємо стандартну поведінку
-      span.addEventListener('touchstart', (e) => {
-        e.preventDefault();
-      });
+        audio.currentTime = startTime;
+        audio.play();
+      };
+
+      span.addEventListener('click', triggerPlayback);
+      span.addEventListener('touchend', triggerPlayback);
     });
   </script>
 </body>
