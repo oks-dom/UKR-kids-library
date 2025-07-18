@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <title>Казки українською для дітей</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -27,22 +28,150 @@
     button:hover {
       background-color: #4fc3f7;
     }
+    .highlight {
+      background-color: #FFF59D; /* Жовтий відтінок для підсвічування */
+      transition: background-color 0.3s;
+    }
+    .hover-highlight {
+      background-color: #E0E0E0; /* Сірий відтінок при наведенні */
+      transition: background-color 0.3s;
+    }
+    #story span {
+      display: inline-block;
+      margin: 2px 0;
+      padding: 2px 4px;
+      border-radius: 3px;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
   <h1>Чарівна казка</h1>
-  <p id="story">
-    Одного разу, в чарівному лісі, жив собі маленький єнот на ім’я Макс. Він мріяв знайти чарівний камінь, який світиться в темряві. Макс вирушив у подорож, зустрічаючи на шляху нових друзів.
-  </p>
-  <button onclick="readStory()">🔊 Прочитати вголос</button>
+  <div id="story">
+  
+
+  <span data-start="0.95">Одного разу</span>
+  <span data-start="1.91">в чарівному лісі</span>
+  <span data-start="4.484">жив собі маленький єнот</span>
+  <span data-start="7.412">на імя Макс</span>
+  <span data-start="9.02">він мріяв знайти</span>
+  <span data-start="11.467">чарівний камінь</span>
+  <span data-start="13.063">який світиться в темряві</span>
+  <span data-start="15.993">Макс вирушив у подорож</span>
+  <span data-start="17.843">зустрічаючи на шляху нових друзів.</span>
+  </div>
+
+
+<img id="storybookImage"
+     src="enotKazka.png"
+     alt="Казковий ліс із єнотом"
+     style="max-width: 25%; height: auto; border-radius: 12px; cursor: pointer; transition: max-width 0.5s ease;" 
+     onclick="toggleImageSize()">
+
+<script>
+  let isExpanded = false;
+
+  function toggleImageSize() {
+    const img = document.getElementById("storybookImage");
+
+    if (!isExpanded) {
+      img.style.maxWidth = "100%";
+    } else {
+      img.style.maxWidth = "25%";
+    }
+
+    isExpanded = !isExpanded;
+  }
+</script>
+
+
+<audio id="audioPlayer" controls>
+    <source src="kazkaaudio.m4a" type="audio/mp4">
+    Ваш браузер не підтримує аудіо.
+  </audio>
 
   <script>
-    function readStory() {
-      const text = document.getElementById("story").innerText;
-      const utterance = new SpeechSynthesisUtterance(text);
-      utterance.lang = "uk-UA";
-      speechSynthesis.speak(utterance);
+    const audio = document.getElementById('audioPlayer');
+    const textSpans = document.querySelectorAll('#story span');
+    let touchTimer = null;
+
+    // Функція для відтворення аудіо з певного моменту
+    function playFromTime(startTime) {
+      audio.currentTime = startTime;
+      audio.play();
     }
+
+    // Відстежуємо поточний час аудіо для підсвічування
+    audio.addEventListener('timeupdate', () => {
+      const currentTime = audio.currentTime;
+      
+      textSpans.forEach(span => {
+        const startTime = parseFloat(span.getAttribute('data-start'));
+        const duration = 1.5; // Приблизна тривалість фрази (сек)
+        
+        if (currentTime >= startTime && currentTime < startTime + duration) {
+          span.classList.add('highlight');
+        } else {
+          span.classList.remove('highlight');
+        }
+      });
+    });
+
+    // Скидаємо підсвічування, коли аудіо закінчилось
+    audio.addEventListener('ended', () => {
+      textSpans.forEach(span => {
+        span.classList.remove('highlight');
+      });
+    });
+
+    // Обробники подій для кожного фрагменту тексту
+    textSpans.forEach(span => {
+      const startTime = parseFloat(span.getAttribute('data-start'));
+      
+      // Для комп'ютерів (мишка)
+      span.addEventListener('mouseenter', () => {
+        span.classList.add('hover-highlight');
+      });
+      
+      span.addEventListener('mouseleave', () => {
+        span.classList.remove('hover-highlight');
+      });
+      
+      span.addEventListener('click', () => {
+        // Видаляємо жовте підсвічування з усіх елементів
+        textSpans.forEach(s => s.classList.remove('highlight'));
+        // Додаємо жовте підсвічування до поточного елементу
+        span.classList.add('highlight');
+        // Починаємо відтворення з цього моменту
+        playFromTime(startTime);
+      });
+      
+      // Для смартфонів (дотики)
+      span.addEventListener('touchstart', () => {
+        span.classList.add('hover-highlight');
+        touchTimer = setTimeout(() => {
+          span.classList.remove('hover-highlight');
+        }, 300);
+      });
+      
+      span.addEventListener('touchend', (e) => {
+        e.preventDefault();
+        clearTimeout(touchTimer);
+        
+        if (!span.classList.contains('highlight')) {
+          // Перший тап - сіре підсвічування
+          span.classList.add('hover-highlight');
+          setTimeout(() => {
+            span.classList.remove('hover-highlight');
+          }, 1000);
+        } else {
+          // Другий тап - жовте підсвічування і відтворення
+          textSpans.forEach(s => s.classList.remove('highlight'));
+          span.classList.add('highlight');
+          playFromTime(startTime);
+        }
+      });
+    });
   </script>
 </body>
 </html>
