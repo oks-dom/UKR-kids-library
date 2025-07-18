@@ -9,144 +9,139 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            display: grid;
-            grid-template-columns: 250px 1fr;
             min-height: 100vh;
+            background-color: #f9f9f9;
+        }
+        
+        /* Стилі для головного контейнера */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
         }
         
         /* Стилі для меню */
         .menu {
-            background-color: #f0f0f0;
-            padding: 20px;
-            overflow-y: auto;
-        }
-        
-        .menu-button {
-            display: none;
-            position: fixed;
-            top: 10px;
-            left: 10px;
-            z-index: 1000;
-            background: #81d4fa;
-            border: none;
-            padding: 10px;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        
-        .content {
-            padding: 20px;
+            margin: 30px auto;
+            max-width: 600px;
         }
         
         .genre {
             margin-bottom: 15px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            overflow: hidden;
         }
         
         .genre-title {
             font-weight: bold;
+            padding: 12px 15px;
+            background-color: #81d4fa;
+            color: white;
             cursor: pointer;
-            padding: 5px;
-            background-color: #ddd;
-            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        
+        .genre-title:hover {
+            background-color: #4fc3f7;
         }
         
         .books-list {
             display: none;
-            padding-left: 15px;
-            margin-top: 5px;
+            padding: 10px 15px;
+            background-color: white;
         }
         
         .book-link {
             display: block;
-            padding: 5px;
+            padding: 8px 5px;
             color: #333;
             text-decoration: none;
+            border-bottom: 1px solid #eee;
+            transition: background-color 0.2s;
+        }
+        
+        .book-link:last-child {
+            border-bottom: none;
         }
         
         .book-link:hover {
-            background-color: #ddd;
+            background-color: #f5f5f5;
         }
         
-        @media (max-width: 768px) {
-            body {
-                grid-template-columns: 1fr;
+        /* Стилі для заголовка та опису */
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .header h1 {
+            color: #2e7d32;
+            margin-bottom: 10px;
+        }
+        
+        /* Адаптація для мобільних пристроїв */
+        @media (max-width: 600px) {
+            .container {
+                padding: 15px;
             }
             
             .menu {
-                position: fixed;
-                top: 50px;
-                bottom: 0;
-                width: 250px;
-                transform: translateX(-100%);
-                transition: transform 0.3s;
-                z-index: 999;
+                margin: 20px auto;
             }
             
-            .menu.active {
-                transform: translateX(0);
-            }
-            
-            .menu-button {
-                display: block;
-            }
-            
-            .content {
-                padding-top: 60px;
+            .genre-title {
+                padding: 10px 12px;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Кнопка для мобільних пристроїв -->
-    <button class="menu-button" id="menuButton">☰ Жанри</button>
-    
-    <!-- Меню жанрів -->
-    <div class="menu" id="menu">
-        <div class="genre">
-            <div class="genre-title">Казки</div>
-            <div class="books-list">
-                <a href="books/fairy_tale1.html" class="book-link">Казка про єнота</a>
-                <a href="books/fairy_tale2.html" class="book-link">Казка про дракона</a>
-            </div>
+    <div class="container">
+        <!-- Заголовок -->
+        <div class="header">
+            <h1>Дитяча бібліотека</h1>
+            <p>Оберіть книгу зі списку нижче</p>
         </div>
         
-        <div class="genre">
-            <div class="genre-title">Історія</div>
-            <div class="books-list">
-                <a href="books/history1.html" class="book-link">Історія України</a>
-                <a href="books/history2.html" class="book-link">Великі подорожі</a>
+        <!-- Меню жанрів -->
+        <div class="menu">
+            <div class="genre">
+                <div class="genre-title">Казки</div>
+                <div class="books-list">
+                    <a href="books/fairy_tale1.html" class="book-link">Казка про єнота</a>
+                    <a href="books/fairy_tale2.html" class="book-link">Казка про дракона</a>
+                </div>
+            </div>
+            
+            <div class="genre">
+                <div class="genre-title">Історія</div>
+                <div class="books-list">
+                    <a href="books/history1.html" class="book-link">Історія України</a>
+                    <a href="books/history2.html" class="book-link">Великі подорожі</a>
+                </div>
+            </div>
+            
+            <div class="genre">
+                <div class="genre-title">Наука</div>
+                <div class="books-list">
+                    <a href="books/science1.html" class="book-link">Цікава фізика</a>
+                    <a href="books/science2.html" class="book-link">Світ тварин</a>
+                </div>
+            </div>
+            
+            <div class="genre">
+                <div class="genre-title">Спорт</div>
+                <div class="books-list">
+                    <a href="books/sport1.html" class="book-link">Футбол</a>
+                    <a href="books/sport2.html" class="book-link">Баскетбол</a>
+                </div>
             </div>
         </div>
-        
-        <div class="genre">
-            <div class="genre-title">Наука</div>
-            <div class="books-list">
-                <a href="books/science1.html" class="book-link">Цікава фізика</a>
-                <a href="books/science2.html" class="book-link">Світ тварин</a>
-            </div>
-        </div>
-        
-        <div class="genre">
-            <div class="genre-title">Спорт</div>
-            <div class="books-list">
-                <a href="books/sport1.html" class="book-link">Футбол</a>
-                <a href="books/sport2.html" class="book-link">Баскетбол</a>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Основний вміст -->
-    <div class="content">
-        <h1>Вітаємо в дитячій бібліотеці!</h1>
-        <p>Оберіть книгу з меню зліва, щоб почати читання.</p>
     </div>
     
     <script>
-        // Відкриття/закриття меню на мобільних пристроях
-        document.getElementById('menuButton').addEventListener('click', function() {
-            document.getElementById('menu').classList.toggle('active');
-        });
-        
         // Розгортання списку книжок за жанром
         const genreTitles = document.querySelectorAll('.genre-title');
         genreTitles.forEach(title => {
