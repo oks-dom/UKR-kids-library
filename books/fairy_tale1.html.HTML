@@ -48,15 +48,36 @@
 <body>
   <h1>Чарівна казка</h1>
   <div id="story">
-    <span data-start="0.95">Одного разу</span>
-    <span data-start="1.91">в чарівному лісі</span>
-    <span data-start="4.484">жив собі маленький єнот</span>
-    <span data-start="7.412">на імя Макс</span>
-    <span data-start="9.02">він мріяв знайти</span>
-    <span data-start="11.467">чарівний камінь</span>
-    <span data-start="13.063">який світиться в темряві</span>
-    <span data-start="15.993">Макс вирушив у подорож</span>
-    <span data-start="17.843">зустрічаючи на шляху нових друзів.</span>
+    <span data-start="0.0">Одного</span>
+    <span data-start="1.72">разу</span>
+    <span data-start="2.84">в</span>
+    <span data-start="2.98">черивному</span>
+    <span data-start="3.62">лісі</span>
+    <span data-start="4.42">жив</span>
+    <span data-start="5.06">собі</span>
+    <span data-start="5.8">маленький</span>
+    <span data-start="6.66">нот</span>
+    <span data-start="7.24">на</span>
+    <span data-start="7.78">ім'я</span>
+    <span data-start="8.24">Макс.</span>
+    <span data-start="9.72">Він</span>
+    <span data-start="10.08">бріяв</span>
+    <span data-start="10.62">знайти</span>
+    <span data-start="11.62">черивний</span>
+    <span data-start="12.18">камінь,</span>
+    <span data-start="13.22">який</span>
+    <span data-start="13.52">світиться</span>
+    <span data-start="14.2">в</span>
+    <span data-start="14.3">темриві.</span>
+    <span data-start="15.76">Макс</span>
+    <span data-start="16.46">вирушив</span>
+    <span data-start="17.16">у</span>
+    <span data-start="17.26">подорож,</span>
+    <span data-start="18.34">зустрічаючи</span>
+    <span data-start="19.2">на</span>
+    <span data-start="19.38">шляху</span>
+    <span data-start="19.84">нових</span>
+    <span data-start="20.22">друзів.</span>
   </div>
 
   <img id="storybookImage"
@@ -82,7 +103,7 @@
   </script>
 
   <audio id="audioPlayer" controls>
-    <source src="https://raw.githubusercontent.com/oks-dom/UKR-kids-library/main/audio/kazkaaudio.m4a" type="audio/mp4">
+    <source src="https://dn721907.ca.archive.org/0/items/kazkaaudio/kazkaaudio.m4a" type="audio/mp4">
     Ваш браузер не підтримує аудіо.
   </audio>
 
@@ -96,7 +117,7 @@
 
       textSpans.forEach(span => {
         const startTime = parseFloat(span.getAttribute('data-start'));
-        const duration = 1.5;
+        const duration = 1.0; // Зменшили тривалість підсвічування для більшої точності
 
         if (currentTime >= startTime && currentTime < startTime + duration) {
           span.classList.add('highlight');
