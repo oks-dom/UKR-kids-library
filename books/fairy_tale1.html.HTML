@@ -717,21 +717,16 @@
 <span data-start="330.92">це</span>
 <span data-start="331.3">тривожно.</span>
   </div>
+<img id="storybookImage"
+       src="https://raw.githubusercontent.com/oks-dom/UKR-kids-library/main/images/enotKazka.png"
+       alt="Казковий ліс із єнотом"
+       style="max-width: 25%; height: auto; border-radius: 12px; cursor: pointer; transition: max-width 0.5s ease;" 
+       onclick="toggleImageSize()">
 
   <audio id="audioPlayer" controls>
-    <source src="enot1.m4a" type="audio/mp4">
+    <source src="https://dn721907.ca.archive.org/0/items/kazkaaudio/kazkaaudio.m4a" type="audio/mp4">
     Ваш браузер не підтримує аудіо.
   </audio>
-
-  <div class="progress-container" id="progressContainer">
-    <div class="progress-bar" id="progressBar"></div>
-  </div>
-
-  <div class="controls">
-    <button class="control-btn" id="rewindBtn">⏪</button>
-    <button class="control-btn" id="playPauseBtn">▶️</button>
-    <button class="control-btn" id="forwardBtn">⏩</button>
-  </div>
 
   <script>
     // Перемикач теми
@@ -754,92 +749,55 @@
       localStorage.setItem('theme', 'light');
     });
 
-    // Аудіоплеєр
+    // Зміна розміру зображення
+    let isExpanded = false;
+    function toggleImageSize() {
+      const img = document.getElementById("storybookImage");
+      img.style.maxWidth = !isExpanded ? "100%" : "25%";
+      isExpanded = !isExpanded;
+    }
+
+    // Підсвічування тексту
     const audio = document.getElementById('audioPlayer');
     const textSpans = document.querySelectorAll('#story span');
-    const progressBar = document.getElementById('progressBar');
-    const progressContainer = document.getElementById('progressContainer');
-    const playPauseBtn = document.getElementById('playPauseBtn');
-    const rewindBtn = document.getElementById('rewindBtn');
-    const forwardBtn = document.getElementById('forwardBtn');
 
-    // Оновлення прогресу
-    audio.addEventListener('timeupdate', updateProgress);
-
-    function updateProgress() {
-      const { currentTime, duration } = audio;
-      const progressPercent = (currentTime / duration) * 100;
-      progressBar.style.width = `${progressPercent}%`;
-      
-      // Підсвічування тексту
+    audio.addEventListener('timeupdate', () => {
+      const currentTime = audio.currentTime;
       textSpans.forEach(span => {
         const startTime = parseFloat(span.getAttribute('data-start'));
         span.classList.toggle('highlight', 
           currentTime >= startTime && currentTime < startTime + 1.0
         );
       });
-    }
-
-    // Перемотування при кліку на прогрес-бар
-    progressContainer.addEventListener('click', (e) => {
-      const width = progressContainer.clientWidth;
-      const clickX = e.offsetX;
-      const duration = audio.duration;
-      audio.currentTime = (clickX / width) * duration;
     });
 
-    // Клік на слово - перемотування
+    audio.addEventListener('ended', () => {
+      textSpans.forEach(span => span.classList.remove('highlight'));
+    });
+
+    // Обробка кліку і дотику
     textSpans.forEach(span => {
-      span.addEventListener('click', () => {
-        audio.currentTime = parseFloat(span.getAttribute('data-start'));
-        if (audio.paused) audio.play();
+      const startTime = parseFloat(span.getAttribute('data-start'));
+      
+      span.addEventListener('mouseenter', () => {
+        if (!('ontouchstart' in window)) span.classList.add('hover-highlight');
       });
-    });
+      
+      span.addEventListener('mouseleave', () => {
+        if (!('ontouchstart' in window)) span.classList.remove('hover-highlight');
+      });
 
-    // Кнопки управління
-    playPauseBtn.addEventListener('click', () => {
-      if (audio.paused) {
+      const playAtTime = (e) => {
+        e.preventDefault();
+        textSpans.forEach(s => s.classList.remove('highlight'));
+        span.classList.add('highlight');
+        audio.currentTime = startTime;
         audio.play();
-        playPauseBtn.textContent = '⏸️';
-      } else {
-        audio.pause();
-        playPauseBtn.textContent = '▶️';
-      }
-    });
+      };
 
-    rewindBtn.addEventListener('click', () => {
-      audio.currentTime = Math.max(0, audio.currentTime - 10);
+      span.addEventListener('click', playAtTime);
+      span.addEventListener('touchend', playAtTime);
     });
-
-    forwardBtn.addEventListener('click', () => {
-      audio.currentTime = Math.min(audio.duration, audio.currentTime + 10);
-    });
-
-    audio.addEventListener('play', () => {
-      playPauseBtn.textContent = '⏸️';
-    });
-
-    audio.addEventListener('pause', () => {
-      playPauseBtn.textContent = '▶️';
-    });
-
-    // Автопрогравання при завантаженні (для мобільних пристроїв)
-    document.addEventListener('click', function initAudio() {
-      audio.play().then(() => {
-        audio.pause();
-        audio.currentTime = 0;
-      }).catch(e => {});
-      document.removeEventListener('click', initAudio);
-    });
-
-    // Адаптація для мобільних пристроїв
-    if ('ontouchstart' in window) {
-      // Додаткові стилі для мобільних пристроїв
-      document.querySelectorAll('#story span').forEach(span => {
-        span.style.padding = '2px 4px';
-        span.style.margin = '0 1px';
-      });
-    }
   </script>
 </body>
 </html>
