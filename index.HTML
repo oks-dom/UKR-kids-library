@@ -111,17 +111,18 @@
         <div class="menu">
 
 <div class="genre">
-    <div class="genre-title">
-        Казки 
-        <button onclick="document.getElementById('kazky-audio').play()" style="border: none; background: none; cursor: pointer;">
-            🔊
-        </button>
-    </div>
-    <div class="books-list">
-        <a href="books/fairy_tale1.html" class="book-link">Казка про єнота</a>
-        <a href="books/fairy_tale2.html" class="book-link">Казка про дракона</a>
-    </div>
+  <div class="genre-title" style="display: flex; justify-content: space-between; align-items: center;">
+    <span style="text-align: left;">Казки</span>
+    <span onclick="document.getElementById('kazky-audio').play()" style="cursor: pointer;">🔊</span>
+  </div>
+
+  <div class="books-list">
+    <a href="books/fairy_tale1.html" class="book-link">Казка про єнота</a>
+    <a href="books/fairy_tale2.html" class="book-link">Казка про дракона</a>
+  </div>
 </div>
+
+<audio id="kazky-audio" src="Kazky_button.m4a" preload="auto" playsinline></audio>
 
 <audio id="kazky-audio" src="Kazky_button.m4a"></audio>
 
