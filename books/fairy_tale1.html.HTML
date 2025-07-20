@@ -49,26 +49,26 @@
   <h1>Чарівна казка</h1>
   <div id="story">
     <span data-start="0.0">Одного</span>
-    <span data-start="1.72">разу</span>
+    <span data-start="1.72">разу,</span>
     <span data-start="2.84">в</span>
-    <span data-start="2.98">черивному</span>
-    <span data-start="3.62">лісі</span>
+    <span data-start="2.98">чарівному</span>
+    <span data-start="3.62">лісі,</span>
     <span data-start="4.42">жив</span>
     <span data-start="5.06">собі</span>
     <span data-start="5.8">маленький</span>
-    <span data-start="6.66">нот</span>
+    <span data-start="6.66">єнот</span>
     <span data-start="7.24">на</span>
     <span data-start="7.78">ім'я</span>
     <span data-start="8.24">Макс.</span>
     <span data-start="9.72">Він</span>
-    <span data-start="10.08">бріяв</span>
+    <span data-start="10.08">мріяв</span>
     <span data-start="10.62">знайти</span>
-    <span data-start="11.62">черивний</span>
+    <span data-start="11.62">чарівний</span>
     <span data-start="12.18">камінь,</span>
     <span data-start="13.22">який</span>
     <span data-start="13.52">світиться</span>
     <span data-start="14.2">в</span>
-    <span data-start="14.3">темриві.</span>
+    <span data-start="14.3">темряві.</span>
     <span data-start="15.76">Макс</span>
     <span data-start="16.46">вирушив</span>
     <span data-start="17.16">у</span>
@@ -117,7 +117,7 @@
 
       textSpans.forEach(span => {
         const startTime = parseFloat(span.getAttribute('data-start'));
-        const duration = 1.0; // Зменшили тривалість підсвічування для більшої точності
+        const duration = 1.0;
 
         if (currentTime >= startTime && currentTime < startTime + duration) {
           span.classList.add('highlight');
