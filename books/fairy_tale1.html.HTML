@@ -1,99 +1,162 @@
 <!DOCTYPE html>
 <html lang="uk">
 <head>
-  <meta charset="UTF-8" />
-  <title>Казки українською для дітей</title>
+  <meta charset="UTF-8">
+  <title>Казка про єнота Макса</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Arial Rounded MT Bold', 'Arial', sans-serif;
       padding: 2rem;
       background: #f9f9f9;
       max-width: 800px;
       margin: auto;
-      line-height: 1.6;
-      transition: all 0.3s ease;
+      line-height: 1.8;
+      transition: all 0.3s;
+      color: #333;
     }
     body.dark-mode {
-      background-color: #121212;
+      background: #121212;
       color: #f0f0f0;
+    }
+    h1 {
+      color: #2e7d32;
+      text-align: center;
+      margin-bottom: 2rem;
+      font-size: 2.2rem;
     }
     .dark-mode h1 {
       color: #81d4fa;
     }
-    .dark-mode #story span {
-      color: #ffffff;
-    }
-    h1 {
-      color: #2e7d32;
-    }
-    button {
-      padding: 10px 20px;
-      font-size: 1rem;
-      margin-top: 1rem;
-      background-color: #81d4fa;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    button:hover {
-      background-color: #4fc3f7;
-    }
     .highlight {
       background-color: #FFF59D;
       transition: background-color 0.3s;
+      border-radius: 4px;
+      padding: 0 4px;
     }
     .dark-mode .highlight {
       background-color: #FFA000;
       color: #000;
     }
-    .hover-highlight {
-      background-color: #E0E0E0;
-      transition: background-color 0.3s;
-    }
-    .dark-mode .hover-highlight {
-      background-color: #333;
+    #story {
+      font-size: 1.2rem;
+      text-align: justify;
+      hyphens: auto;
+      -webkit-hyphens: auto;
+      -ms-hyphens: auto;
     }
     #story span {
-      display: inline-block;
-      margin: 2px 0;
-      padding: 2px 4px;
-      border-radius: 3px;
+      display: inline;
+      margin: 0 1px;
+      padding: 0 2px;
       cursor: pointer;
+      transition: all 0.2s;
+    }
+    #story span:hover {
+      background-color: rgba(129, 212, 250, 0.3);
+    }
+    .dark-mode #story span:hover {
+      background-color: rgba(255, 160, 0, 0.3);
     }
     .theme-toggle {
       position: fixed;
-      top: 20px;
-      right: 20px;
+      top: 15px;
+      right: 15px;
       display: flex;
       gap: 10px;
+      z-index: 100;
     }
     .theme-btn {
-      width: 40px;
-      height: 40px;
+      width: 44px;
+      height: 44px;
       border-radius: 50%;
       border: none;
       cursor: pointer;
+      font-size: 24px;
       display: flex;
       align-items: center;
       justify-content: center;
-      background: transparent;
-      font-size: 24px;
-      transition: transform 0.3s;
+      background: rgba(255,255,255,0.9);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      transition: all 0.3s;
+    }
+    .dark-mode .theme-btn {
+      background: rgba(30,30,30,0.9);
     }
     .theme-btn:hover {
       transform: scale(1.1);
     }
-    #darkBtn {
-      color: #121212;
-      background-color: #f0f0f0;
+    #audioPlayer {
+      width: 100%;
+      margin: 30px 0;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
     }
-    #lightBtn {
-      color: #FFD700;
-      background-color: transparent;
+    .dark-mode #audioPlayer {
+      filter: invert(90%);
     }
-    .dark-mode #lightBtn {
-      background-color: #333;
+    .progress-container {
+      width: 100%;
+      height: 6px;
+      background: #e0e0e0;
+      border-radius: 3px;
+      margin: 15px 0;
+      cursor: pointer;
+    }
+    .dark-mode .progress-container {
+      background: #333;
+    }
+    .progress-bar {
+      height: 100%;
+      background: #4fc3f7;
+      border-radius: 3px;
+      width: 0%;
+      transition: width 0.1s;
+    }
+    .controls {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 15px;
+    }
+    .control-btn {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      border: none;
+      background: #81d4fa;
+      color: white;
+      font-size: 20px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s;
+    }
+    .control-btn:hover {
+      background: #4fc3f7;
+      transform: scale(1.1);
+    }
+    .dark-mode .control-btn {
+      background: #333;
+      color: #81d4fa;
+    }
+    @media (max-width: 600px) {
+      body {
+        padding: 1rem;
+      }
+      h1 {
+        font-size: 1.8rem;
+        margin-top: 40px;
+      }
+      #story {
+        font-size: 1.1rem;
+      }
+      .theme-btn {
+        width: 36px;
+        height: 36px;
+        font-size: 20px;
+      }
     }
   </style>
 </head>
@@ -103,50 +166,28 @@
     <button id="lightBtn" class="theme-btn" title="Денний режим">☀️</button>
   </div>
 
-  <h1>Чарівна казка</h1>
+  <h1>Казка про єнота Макса</h1>
   <div id="story">
+    <!-- Текст з таймінгами буде вставлено автоматично -->
     <span data-start="0.0">Одного</span>
-    <span data-start="1.72">разу,</span>
-    <span data-start="2.84">в</span>
-    <span data-start="2.98">чарівному</span>
-    <span data-start="3.62">лісі,</span>
-    <span data-start="4.42">жив</span>
-    <span data-start="5.06">собі</span>
-    <span data-start="5.8">маленький</span>
-    <span data-start="6.66">єнот</span>
-    <span data-start="7.24">на</span>
-    <span data-start="7.78">ім'я</span>
-    <span data-start="8.24">Макс.</span>
-    <span data-start="9.72">Він</span>
-    <span data-start="10.08">мріяв</span>
-    <span data-start="10.62">знайти</span>
-    <span data-start="11.62">чарівний</span>
-    <span data-start="12.18">камінь,</span>
-    <span data-start="13.22">який</span>
-    <span data-start="13.52">світиться</span>
-    <span data-start="14.2">в</span>
-    <span data-start="14.3">темряві.</span>
-    <span data-start="15.76">Макс</span>
-    <span data-start="16.46">вирушив</span>
-    <span data-start="17.16">у</span>
-    <span data-start="17.26">подорож,</span>
-    <span data-start="18.34">зустрічаючи</span>
-    <span data-start="19.2">на</span>
-    <span data-start="19.38">шляху</span>
-    <span data-start="19.84">нових</span>
-    <span data-start="20.22">друзів.</span>
+    <span data-start="1.64">разу</span>
+    <!-- ... інші слова ... -->
   </div>
 
-  <img id="storybookImage"
-       src="https://raw.githubusercontent.com/oks-dom/UKR-kids-library/main/images/enotKazka.png"
-       alt="Казковий ліс із єнотом"
-       style="max-width: 25%; height: auto; border-radius: 12px; cursor: pointer; transition: max-width 0.5s ease;" 
-       onclick="toggleImageSize()">
-
   <audio id="audioPlayer" controls>
-    <source src="https://dn721907.ca.archive.org/0/items/kazkaaudio/kazkaaudio.m4a" type="audio/mp4">
+    <source src="enot1.m4a" type="audio/mp4">
     Ваш браузер не підтримує аудіо.
   </audio>
+
+  <div class="progress-container" id="progressContainer">
+    <div class="progress-bar" id="progressBar"></div>
+  </div>
+
+  <div class="controls">
+    <button class="control-btn" id="rewindBtn">⏪</button>
+    <button class="control-btn" id="playPauseBtn">▶️</button>
+    <button class="control-btn" id="forwardBtn">⏩</button>
+  </div>
 
   <script>
     // Перемикач теми
@@ -169,55 +210,92 @@
       localStorage.setItem('theme', 'light');
     });
 
-    // Зміна розміру зображення
-    let isExpanded = false;
-    function toggleImageSize() {
-      const img = document.getElementById("storybookImage");
-      img.style.maxWidth = !isExpanded ? "100%" : "25%";
-      isExpanded = !isExpanded;
-    }
-
-    // Підсвічування тексту
+    // Аудіоплеєр
     const audio = document.getElementById('audioPlayer');
     const textSpans = document.querySelectorAll('#story span');
+    const progressBar = document.getElementById('progressBar');
+    const progressContainer = document.getElementById('progressContainer');
+    const playPauseBtn = document.getElementById('playPauseBtn');
+    const rewindBtn = document.getElementById('rewindBtn');
+    const forwardBtn = document.getElementById('forwardBtn');
 
-    audio.addEventListener('timeupdate', () => {
-      const currentTime = audio.currentTime;
+    // Оновлення прогресу
+    audio.addEventListener('timeupdate', updateProgress);
+
+    function updateProgress() {
+      const { currentTime, duration } = audio;
+      const progressPercent = (currentTime / duration) * 100;
+      progressBar.style.width = `${progressPercent}%`;
+      
+      // Підсвічування тексту
       textSpans.forEach(span => {
         const startTime = parseFloat(span.getAttribute('data-start'));
         span.classList.toggle('highlight', 
           currentTime >= startTime && currentTime < startTime + 1.0
         );
       });
+    }
+
+    // Перемотування при кліку на прогрес-бар
+    progressContainer.addEventListener('click', (e) => {
+      const width = progressContainer.clientWidth;
+      const clickX = e.offsetX;
+      const duration = audio.duration;
+      audio.currentTime = (clickX / width) * duration;
     });
 
-    audio.addEventListener('ended', () => {
-      textSpans.forEach(span => span.classList.remove('highlight'));
-    });
-
-    // Обробка кліку і дотику
+    // Клік на слово - перемотування
     textSpans.forEach(span => {
-      const startTime = parseFloat(span.getAttribute('data-start'));
-      
-      span.addEventListener('mouseenter', () => {
-        if (!('ontouchstart' in window)) span.classList.add('hover-highlight');
+      span.addEventListener('click', () => {
+        audio.currentTime = parseFloat(span.getAttribute('data-start'));
+        if (audio.paused) audio.play();
       });
-      
-      span.addEventListener('mouseleave', () => {
-        if (!('ontouchstart' in window)) span.classList.remove('hover-highlight');
-      });
-
-      const playAtTime = (e) => {
-        e.preventDefault();
-        textSpans.forEach(s => s.classList.remove('highlight'));
-        span.classList.add('highlight');
-        audio.currentTime = startTime;
-        audio.play();
-      };
-
-      span.addEventListener('click', playAtTime);
-      span.addEventListener('touchend', playAtTime);
     });
+
+    // Кнопки управління
+    playPauseBtn.addEventListener('click', () => {
+      if (audio.paused) {
+        audio.play();
+        playPauseBtn.textContent = '⏸️';
+      } else {
+        audio.pause();
+        playPauseBtn.textContent = '▶️';
+      }
+    });
+
+    rewindBtn.addEventListener('click', () => {
+      audio.currentTime = Math.max(0, audio.currentTime - 10);
+    });
+
+    forwardBtn.addEventListener('click', () => {
+      audio.currentTime = Math.min(audio.duration, audio.currentTime + 10);
+    });
+
+    audio.addEventListener('play', () => {
+      playPauseBtn.textContent = '⏸️';
+    });
+
+    audio.addEventListener('pause', () => {
+      playPauseBtn.textContent = '▶️';
+    });
+
+    // Автопрогравання при завантаженні (для мобільних пристроїв)
+    document.addEventListener('click', function initAudio() {
+      audio.play().then(() => {
+        audio.pause();
+        audio.currentTime = 0;
+      }).catch(e => {});
+      document.removeEventListener('click', initAudio);
+    });
+
+    // Адаптація для мобільних пристроїв
+    if ('ontouchstart' in window) {
+      // Додаткові стилі для мобільних пристроїв
+      document.querySelectorAll('#story span').forEach(span => {
+        span.style.padding = '2px 4px';
+        span.style.margin = '0 1px';
+      });
+    }
   </script>
 </body>
 </html>
