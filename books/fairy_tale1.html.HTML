@@ -12,6 +12,17 @@
       max-width: 800px;
       margin: auto;
       line-height: 1.6;
+      transition: all 0.3s ease;
+    }
+    body.dark-mode {
+      background-color: #121212;
+      color: #f0f0f0;
+    }
+    .dark-mode h1 {
+      color: #81d4fa;
+    }
+    .dark-mode #story span {
+      color: #ffffff;
     }
     h1 {
       color: #2e7d32;
@@ -32,9 +43,16 @@
       background-color: #FFF59D;
       transition: background-color 0.3s;
     }
+    .dark-mode .highlight {
+      background-color: #FFA000;
+      color: #000;
+    }
     .hover-highlight {
       background-color: #E0E0E0;
       transition: background-color 0.3s;
+    }
+    .dark-mode .hover-highlight {
+      background-color: #333;
     }
     #story span {
       display: inline-block;
@@ -43,9 +61,48 @@
       border-radius: 3px;
       cursor: pointer;
     }
+    .theme-toggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      display: flex;
+      gap: 10px;
+    }
+    .theme-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: transparent;
+      font-size: 24px;
+      transition: transform 0.3s;
+    }
+    .theme-btn:hover {
+      transform: scale(1.1);
+    }
+    #darkBtn {
+      color: #121212;
+      background-color: #f0f0f0;
+    }
+    #lightBtn {
+      color: #FFD700;
+      background-color: transparent;
+    }
+    .dark-mode #lightBtn {
+      background-color: #333;
+    }
   </style>
 </head>
 <body>
+  <div class="theme-toggle">
+    <button id="darkBtn" class="theme-btn" title="Нічний режим">🌙</button>
+    <button id="lightBtn" class="theme-btn" title="Денний режим">☀️</button>
+  </div>
+
   <h1>Чарівна казка</h1>
   <div id="story">
     <span data-start="0.0">Одного</span>
@@ -86,44 +143,51 @@
        style="max-width: 25%; height: auto; border-radius: 12px; cursor: pointer; transition: max-width 0.5s ease;" 
        onclick="toggleImageSize()">
 
-  <script>
-    let isExpanded = false;
-
-    function toggleImageSize() {
-      const img = document.getElementById("storybookImage");
-
-      if (!isExpanded) {
-        img.style.maxWidth = "100%";
-      } else {
-        img.style.maxWidth = "25%";
-      }
-
-      isExpanded = !isExpanded;
-    }
-  </script>
-
   <audio id="audioPlayer" controls>
     <source src="https://dn721907.ca.archive.org/0/items/kazkaaudio/kazkaaudio.m4a" type="audio/mp4">
     Ваш браузер не підтримує аудіо.
   </audio>
 
   <script>
+    // Перемикач теми
+    const darkBtn = document.getElementById('darkBtn');
+    const lightBtn = document.getElementById('lightBtn');
+    const body = document.body;
+
+    // Перевірка збереженої теми
+    if (localStorage.getItem('theme') === 'dark') {
+      body.classList.add('dark-mode');
+    }
+
+    darkBtn.addEventListener('click', () => {
+      body.classList.add('dark-mode');
+      localStorage.setItem('theme', 'dark');
+    });
+
+    lightBtn.addEventListener('click', () => {
+      body.classList.remove('dark-mode');
+      localStorage.setItem('theme', 'light');
+    });
+
+    // Зміна розміру зображення
+    let isExpanded = false;
+    function toggleImageSize() {
+      const img = document.getElementById("storybookImage");
+      img.style.maxWidth = !isExpanded ? "100%" : "25%";
+      isExpanded = !isExpanded;
+    }
+
+    // Підсвічування тексту
     const audio = document.getElementById('audioPlayer');
     const textSpans = document.querySelectorAll('#story span');
 
-    // Підсвічування під час відтворення
     audio.addEventListener('timeupdate', () => {
       const currentTime = audio.currentTime;
-
       textSpans.forEach(span => {
         const startTime = parseFloat(span.getAttribute('data-start'));
-        const duration = 1.0;
-
-        if (currentTime >= startTime && currentTime < startTime + duration) {
-          span.classList.add('highlight');
-        } else {
-          span.classList.remove('highlight');
-        }
+        span.classList.toggle('highlight', 
+          currentTime >= startTime && currentTime < startTime + 1.0
+        );
       });
     });
 
@@ -131,25 +195,19 @@
       textSpans.forEach(span => span.classList.remove('highlight'));
     });
 
-    // Обробка кліку і дотику на span
+    // Обробка кліку і дотику
     textSpans.forEach(span => {
       const startTime = parseFloat(span.getAttribute('data-start'));
-
-      // Hover для миші
+      
       span.addEventListener('mouseenter', () => {
-        if (!('ontouchstart' in window)) {
-          span.classList.add('hover-highlight');
-        }
+        if (!('ontouchstart' in window)) span.classList.add('hover-highlight');
       });
-
+      
       span.addEventListener('mouseleave', () => {
-        if (!('ontouchstart' in window)) {
-          span.classList.remove('hover-highlight');
-        }
+        if (!('ontouchstart' in window)) span.classList.remove('hover-highlight');
       });
 
-      // Єдиний обробник для обох платформ
-      const triggerPlayback = (e) => {
+      const playAtTime = (e) => {
         e.preventDefault();
         textSpans.forEach(s => s.classList.remove('highlight'));
         span.classList.add('highlight');
@@ -157,8 +215,8 @@
         audio.play();
       };
 
-      span.addEventListener('click', triggerPlayback);
-      span.addEventListener('touchend', triggerPlayback);
+      span.addEventListener('click', playAtTime);
+      span.addEventListener('touchend', playAtTime);
     });
   </script>
 </body>
