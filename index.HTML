@@ -106,22 +106,26 @@
         </div>
         
         <!-- Меню жанрів -->
+
+
         <div class="menu">
-            <div class="genre">
-                <div class="genre-title">Казки</div>
-                <div class="books-list">
-                    <a href="books/fairy_tale1.html" class="book-link">Казка про єнота</a>
-                    <a href="books/fairy_tale2.html" class="book-link">Казка про дракона</a>
-                </div>
-            </div>
-            
-            <div class="genre">
-                <div class="genre-title">Історія</div>
-                <div class="books-list">
-                    <a href="books/history1.html" class="book-link">Історія України</a>
-                    <a href="books/history2.html" class="book-link">Великі подорожі</a>
-                </div>
-            </div>
+
+<div class="genre">
+    <div class="genre-title">
+        Казки 
+        <button onclick="document.getElementById('kazky-audio').play()" style="border: none; background: none; cursor: pointer;">
+            🔊
+        </button>
+    </div>
+    <div class="books-list">
+        <a href="books/fairy_tale1.html" class="book-link">Казка про єнота</a>
+        <a href="books/fairy_tale2.html" class="book-link">Казка про дракона</a>
+    </div>
+</div>
+
+<audio id="kazky-audio" src="Kazky_button.m4a"></audio>
+
+  
             
             <div class="genre">
                 <div class="genre-title">Наука</div>
