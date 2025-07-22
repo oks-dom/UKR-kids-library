@@ -50,15 +50,62 @@
   }
 </style>
 </head>
-
+/* Додайте ці стилі до існуючих */
+body.dark-mode {
+  background-color: #121212;
+  color: #f0f0f0;
+}
+.dark-mode h1 {
+  color: #81d4fa;
+}
+.dark-mode #story span {
+  color: #ffffff;
+}
+.theme-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  gap: 10px;
+}
+.theme-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  font-size: 24px;
+  transition: transform 0.3s;
+}
+.theme-btn:hover {
+  transform: scale(1.1);
+}
+#darkBtn {
+  color: #121212;
+  background-color: #f0f0f0;
+}
+#lightBtn {
+  color: #FFD700;
+  background-color: transparent;
+}
+.dark-mode #lightBtn {
+  background-color: #333;
+}
 <body>
+<div class="theme-toggle">
+  <button id="darkBtn" class="theme-btn" title="Нічний режим">🌙</button>
+  <button id="lightBtn" class="theme-btn" title="Денний режим">☀️</button>
+</div>
   <div class="audio-wrapper">
     <audio id="audioPlayer" controls>
       <source src="https://dn721804.ca.archive.org/0/items/enot1_202507/enot1.m4a" type="audio/mp4">
       Ваш браузер не підтримує аудіо.
     </audio>
   </div>
-<body>
   <h1>Чарівна казка</h1>
   <div id="story">
     <!-- Тут буде оновлений текст з таймінгом -->
@@ -620,6 +667,25 @@
   </audio>
 
   <script>
+// Додайте цей код до існуючого скрипту
+const darkBtn = document.getElementById('darkBtn');
+const lightBtn = document.getElementById('lightBtn');
+const body = document.body;
+
+// Перевірка збереженої теми
+if (localStorage.getItem('theme') === 'dark') {
+  body.classList.add('dark-mode');
+}
+
+darkBtn.addEventListener('click', () => {
+  body.classList.add('dark-mode');
+  localStorage.setItem('theme', 'dark');
+});
+
+lightBtn.addEventListener('click', () => {
+  body.classList.remove('dark-mode');
+  localStorage.setItem('theme', 'light');
+});
     const audio = document.getElementById('audioPlayer');
     const textSpans = document.querySelectorAll('#story span');
 
