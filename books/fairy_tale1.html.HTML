@@ -103,6 +103,11 @@
   </div>
   <h1>Чарівна казка про Єнота</h1>
   <div id="story">
+<img id="storybookImage" 
+     src="https://raw.githubusercontent.com/oks-dom/UKR-kids-library/main/images/enotKazka.png"
+     alt="Казковий ліс із єнотом"
+     style="max-width: 25%; height: auto; border-radius: 12px; cursor: pointer; transition: max-width 0.5s ease;" 
+     onclick="toggleImageSize()">
     <!-- Тут буде оновлений текст з таймінгом -->
     <!-- Вставлено з story_with_timings.html із виправленням помилок -->
     
@@ -739,6 +744,13 @@ lightBtn.addEventListener('click', () => {
         playFromTime(startTime);
       });
     });
+// Зміна розміру зображення
+let isExpanded = false;
+function toggleImageSize() {
+  const img = document.getElementById("storybookImage");
+  img.style.maxWidth = !isExpanded ? "100%" : "25%";
+  isExpanded = !isExpanded;
+}
   </script>
 </body>
 </html>
