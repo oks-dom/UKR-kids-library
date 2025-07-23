@@ -786,16 +786,62 @@ function toggleImageSize() {
   isExpanded = !isExpanded;
 }
   </script>
-<div class="page-navigation">
-  <a href="../index.html">🏠</a>
-  <a href="enot_day1.html">1</a>
-  <a href="enot_day2.html">2</a>
-  <a href="enot_day3.html">3</a>
-  <a href="enot_day4.html">3</a>
-  <a href="enot_day5.html">3</a>
-  <a href="enot_day6.html">3</a>
-  <span>…</span>
-  <a href="enot_day10.html">10</a>
+<div class="pagination">
+  <a href="../index.html" class="home">🏠</a>
+  <button class="arrow prev" disabled>&lt;</button>
+  <div class="pages">
+    <a href="enot_day1.html">1</a>
+    <a href="enot_day2.html">2</a>
+    <a href="enot_day3.html">3</a>
+    <a href="enot_day4.html">4</a>
+    <a href="enot_day5.html">5</a>
+    <a href="enot_day6.html">6</a>
+    <span>…</span>
+    <a href="enot_day10.html">10</a>
+  </div>
+  <button class="arrow next">&gt;</button>
 </div>
+<script>
+const pages = document.querySelector('.pages');
+const prev = document.querySelector('.arrow.prev');
+const next = document.querySelector('.arrow.next');
+prev.onclick = () => { pages.scrollBy({left: -80, behavior: 'smooth'}); };
+next.onclick = () => { pages.scrollBy({left: 80, behavior: 'smooth'}); };
+pages.addEventListener('scroll', () => {
+  prev.disabled = pages.scrollLeft <= 0;
+  next.disabled = pages.scrollLeft + pages.offsetWidth >= pages.scrollWidth - 1;
+});
+</script>
+<style>
+.pagination {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  flex-wrap: nowrap;
+  overflow: hidden;
+  background: #f9f9f9;
+  padding: 4px 8px;
+  border-radius: 8px;
+}
+.pages {
+  display: flex;
+  overflow-x: auto;
+  max-width: 240px;
+  scrollbar-width: none;
+}
+.pages::-webkit-scrollbar {
+  display: none;
+}
+.arrow {
+  background: none;
+  border: none;
+  font-size: 1.2em;
+  cursor: pointer;
+  padding: 0 6px;
+}
+.home {
+  font-size: 1.2em;
+}
+</style>
 </body>
 </html>
