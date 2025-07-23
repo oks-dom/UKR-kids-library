@@ -180,7 +180,10 @@
     .dark-mode #lightBtn {
       background-color: #333;
     }
-  </style>
+.arrow {
+  display: none !important;
+}
+   </style>
 </head>
 <body>
   <!-- Кнопки теми -->
@@ -919,15 +922,7 @@ pages.addEventListener('scroll', () => {
   <button class="arrow next">&gt;</button>
 </div>
 <script>
-const pages = document.querySelector('.pages');
-const prev = document.querySelector('.arrow.prev');
-const next = document.querySelector('.arrow.next');
-prev.onclick = () => { pages.scrollBy({left: -80, behavior: 'smooth'}); };
-next.onclick = () => { pages.scrollBy({left: 80, behavior: 'smooth'}); };
-pages.addEventListener('scroll', () => {
-  prev.disabled = pages.scrollLeft <= 0;
-  next.disabled = pages.scrollLeft + pages.offsetWidth >= pages.scrollWidth - 1;
-});
+
 </script>
 
 </body>
