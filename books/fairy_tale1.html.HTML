@@ -5,7 +5,67 @@
   <title>Казки українською для дітей</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 8px 0;
+  background: #fff;
+  border-top: 1px solid #ccc;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100vw;
+  z-index: 100;
+}
 
+.pages {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  max-width: 80vw;
+  scrollbar-width: none;
+}
+.pages::-webkit-scrollbar { display: none; }
+
+.pagination a, .pagination button {
+  min-width: 40px;
+  min-height: 40px;
+  font-size: 1.2em;
+  background: #f5f5f5;
+  border: 2px solid #4a90e2;
+  color: #222;
+  border-radius: 8px;
+  text-align: center;
+  line-height: 40px;
+  cursor: pointer;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  transition: background 0.15s;
+  user-select: none;
+}
+.pagination a:hover, .pagination button:hover {
+  background: #e6f0fa;
+}
+.pagination a.home {
+  font-size: 1.3em;
+  border-radius: 50%;
+}
+
+.pagination button.arrow {
+  background: #4a90e2;
+  color: #fff;
+  border-radius: 8px;
+  font-weight: bold;
+  border: none;
+}
+.pagination button:disabled {
+  background: #ddd;
+  color: #aaa;
+  cursor: not-allowed;
+}
 
 .page-navigation {
   position: fixed;
@@ -843,5 +903,32 @@ pages.addEventListener('scroll', () => {
   font-size: 1.2em;
 }
 </style>
+<div class="pagination">
+  <a href="../index.html" class="home">🏠</a>
+  <button class="arrow prev" disabled>&lt;</button>
+  <div class="pages">
+    <a href="enot_day1.html">1</a>
+    <a href="enot_day2.html">2</a>
+    <a href="enot_day3.html">3</a>
+    <a href="enot_day4.html">4</a>
+    <a href="enot_day5.html">5</a>
+    <a href="enot_day6.html">6</a>
+    <span>…</span>
+    <a href="enot_day10.html">10</a>
+  </div>
+  <button class="arrow next">&gt;</button>
+</div>
+<script>
+const pages = document.querySelector('.pages');
+const prev = document.querySelector('.arrow.prev');
+const next = document.querySelector('.arrow.next');
+prev.onclick = () => { pages.scrollBy({left: -80, behavior: 'smooth'}); };
+next.onclick = () => { pages.scrollBy({left: 80, behavior: 'smooth'}); };
+pages.addEventListener('scroll', () => {
+  prev.disabled = pages.scrollLeft <= 0;
+  next.disabled = pages.scrollLeft + pages.offsetWidth >= pages.scrollWidth - 1;
+});
+</script>
+
 </body>
 </html>
