@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <title>Казки українською для дітей</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+
+
+.page-navigation {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: #fff;
+  border-top: 1px solid #ccc;
+  text-align: center;
+  padding: 10px 0;
+  z-index: 1001;
+}
+
+.page-navigation a {
+  display: inline-block;
+  margin: 0 5px;
+  padding: 6px 12px;
+  background-color: #eee;
+  border-radius: 5px;
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.page-navigation a:hover {
+  background-color: #ddd;
+}
+
+
+
+    /* Ваші початкові стилі */
+    body {
+      font-family: Arial, sans-serif;
+      padding: 2rem;
+      background: #f9f9f9;
+      max-width: 800px;
+      margin: auto;
+      line-height: 1.6;
+    }
+    h1 {
+      color: #2e7d32;
+    }
+    .highlight {
+      background-color: #FFF59D;
+      transition: background-color 0.3s;
+    }
+    .hover-highlight {
+      background-color: #E0E0E0;
+      transition: background-color 0.3s;
+    }
+#story {
+  padding-bottom: 70px;
+}
+    #story span {
+      display: inline-block;
+      margin: 2px 0;
+      padding: 2px 4px;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+    .audio-wrapper {
+      position: sticky;
+      top: 0;
+      background-color: #f9f9f9;
+      padding: 0.5rem 0;
+      z-index: 1000;
+      border-bottom: 1px solid #ccc;
+    }
+    
+    /* Додаткові стилі для темної теми */
+    body.dark-mode {
+      background-color: #121212;
+      color: #f0f0f0;
+    }
+    .dark-mode h1 {
+      color: #81d4fa;
+    }
+    .dark-mode #story span {
+      color: #ffffff;
+    }
+    .theme-toggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      display: flex;
+      gap: 10px;
+    }
+    .theme-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: transparent;
+      font-size: 24px;
+      transition: transform 0.3s;
+    }
+    .theme-btn:hover {
+      transform: scale(1.1);
+    }
+    #darkBtn {
+      color: #121212;
+      background-color: #f0f0f0;
+    }
+    #lightBtn {
+      color: #FFD700;
+      background-color: transparent;
+    }
+    .dark-mode #lightBtn {
+      background-color: #333;
+    }
+  </style>
+</head>
+<body>
+  <!-- Кнопки теми -->
+  <div class="theme-toggle">
+    <button id="darkBtn" class="theme-btn" title="Нічний режим">🌙</button>
+    <button id="lightBtn" class="theme-btn" title="Денний режим">☀️</button>
+  </div>
+  
+  <div class="audio-wrapper">
+    <audio id="audioPlayer" controls>
+      <source src="https://dn721804.ca.archive.org/0/items/enot1_202507/enot1.m4a" type="audio/mp4">
+      Ваш браузер не підтримує аудіо.
+    </audio>
+  </div>
+  <h1>Чарівна казка про Єнота</h1>
+  <div id="story">
+<img id="storybookImage" 
+     src="https://raw.githubusercontent.com/oks-dom/UKR-kids-library/main/images/enotKazka.png"
+     alt="Казковий ліс із єнотом"
+     style="max-width: 25%; height: auto; border-radius: 12px; cursor: pointer; transition: max-width 0.5s ease;" 
+     onclick="toggleImageSize()">
+    <!-- Тут буде оновлений текст з таймінгом -->
+    <!-- Вставлено з story_with_timings.html із виправленням помилок -->
+    
+   <span data-start="0.0">Одного</span>
+<span data-start="1.64">разу</span>
+<span data-start="2.14">в</span>
+<span data-start="2.28">чарівному</span>
+<span data-start="2.72">лісі</span>
+<span data-start="3.48">жив</span>
+<span data-start="4.32">собі</span>
+<span data-start="5.18">маленький</span>
+<span data-start="6.06">єнот</span>
+<span data-start="7.04">на</span>
+<span data-start="7.42">ім'я</span>
+<span data-start="7.78">Макс.</span>
+<span data-start="9.52">Він</span>
+<span data-start="10.04">мріяв</span>
+<span data-start="10.92">знайти</span>
+<span data-start="11.6">чарівний</span>
+<span data-start="12.2">камінь,</span>
+<span data-start="13.66">який</span>
+<span data-start="14.22">світиться</span>
+<span data-start="15.16">в</span>
+<span data-start="15.4">темряві.</span>
+<span data-start="17.3">Макс</span>
+<span data-start="17.86">вирушив</span>
+<span data-start="18.58">у</span>
+<span data-start="18.82">подорож,</span>
+<span data-start="19.98">зустрічаючи</span>
+<span data-start="21.0">на</span>
+<span data-start="21.4">шляху</span>
+<span data-start="22.06">нових</span>
+<span data-start="22.72">друзів.</span>
+<span data-start="24.44">Нарешті!</span>
+<span data-start="25.46">Справжня</span>
+<span data-start="26.76">пригода!</span>
+<span data-start="27.86">—</span>
+<span data-start="28.58">кажу</span>
+<span data-start="28.78">я</span>
+<span data-start="29.1">сам</span>
+<span data-start="29.36">до</span>
+<span data-start="29.36">себе</span>
+<span data-start="30.28">й</span>
+<span data-start="30.68">натягую</span>
+<span data-start="31.22">рюкзак</span>
+<span data-start="31.78">із</span>
+<span data-start="32.2">запасом</span>
+<span data-start="33.08">печива,</span>
+<span data-start="36.78">компасом,</span>
+<span data-start="38.76">картоплиною</span>
+<span data-start="40.18">(бо</span>
+<span data-start="40.8">бабуся</span>
+<span data-start="41.4">каже,</span>
+<span data-start="42.74">що</span>
+<span data-start="42.9">без</span>
+<span data-start="43.18">неї</span>
+<span data-start="43.62">з</span>
+<span data-start="43.76">дому</span>
+<span data-start="44.1">не</span>
+<span data-start="44.74">можна</span>
+<span data-start="45.12">виходити),</span>
+<span data-start="45.78">і</span>
+<span data-start="47.02">щіткою</span>
+<span data-start="47.56">для</span>
+<span data-start="47.74">хвоста</span>
+<span data-start="48.7">—</span>
+<span data-start="49.18">бо</span>
+<span data-start="49.5">навіть</span>
+<span data-start="49.6">у</span>
+<span data-start="49.6">подорожі</span>
+<span data-start="50.52">я</span>
+<span data-start="50.76">мушу</span>
+<span data-start="51.1">виглядати</span>
+<span data-start="51.64">гарно.</span>
+<span data-start="52.88">Та</span>
+<span data-start="53.68">й</span>
+<span data-start="53.88">ще</span>
+<span data-start="54.16">три</span>
+<span data-start="54.38">бутерброди</span>
+<span data-start="55.58">(один</span>
+<span data-start="55.92">уже</span>
+<span data-start="56.16">з'їдений,</span>
+<span data-start="57.26">але</span>
+<span data-start="57.54">я</span>
+<span data-start="57.86">рахую</span>
+<span data-start="58.6">його</span>
+<span data-start="58.84">«запасним»).</span>
+<span data-start="60.38">Першим</span>
+<span data-start="61.22">мені</span>
+<span data-start="61.54">трапився</span>
+<span data-start="62.18">Кріт</span>
+<span data-start="62.44">Фелікс.</span>
+<span data-start="63.96">Він</span>
+<span data-start="64.22">носив</span>
+<span data-start="64.58">окуляри,</span>
+<span data-start="65.7">хоча</span>
+<span data-start="66.08">майже</span>
+<span data-start="66.58">нічого</span>
+<span data-start="67.02">не</span>
+<span data-start="67.2">бачив,</span>
+<span data-start="68.3">бо</span>
+<span data-start="68.68">окуляри</span>
+<span data-start="69.4">він</span>
+<span data-start="69.62">носив...</span>
+<span data-start="70.14">на</span>
+<span data-start="70.66">потилиці.</span>
+<span data-start="72.06">Казав,</span>
+<span data-start="72.56">так</span>
+<span data-start="72.72">модно.</span>
+<span data-start="74.52">—</span>
+<span data-start="75.36">Ти</span>
+<span data-start="75.52">куди,</span>
+<span data-start="76.42">пухнастику?</span>
+<span data-start="76.64">—</span>
+<span data-start="76.64">питає</span>
+<span data-start="77.34">він</span>
+<span data-start="77.46">і</span>
+<span data-start="77.46">зіштовхує</span>
+<span data-start="78.36">носом</span>
+<span data-start="79.1">мій</span>
+<span data-start="79.1">рюкзак.</span>
+<span data-start="81.4">—</span>
+<span data-start="81.76">У</span>
+<span data-start="82.28">печеру</span>
+<span data-start="82.28">Бульк?</span>
+<span data-start="82.72">Чи</span>
+<span data-start="83.34">в</span>
+<span data-start="83.44">долину</span>
+<span data-start="83.9">Муркоту?</span>
+<span data-start="86.04">—</span>
+<span data-start="86.56">Я</span>
+<span data-start="87.04">шукаю</span>
+<span data-start="87.46">чарівний</span>
+<span data-start="87.46">камінь,</span>
+<span data-start="88.38">той,</span>
+<span data-start="88.58">що</span>
+<span data-start="88.86">світиться</span>
+<span data-start="89.34">в</span>
+<span data-start="89.4">темряві!</span>
+<span data-start="90.18">—</span>
+<span data-start="90.6">гордо</span>
+<span data-start="90.88">кажу</span>
+<span data-start="90.88">я.</span>
+<span data-start="91.98">—</span>
+<span data-start="92.48">А!</span>
+<span data-start="92.48">Камінь!</span>
+<span data-start="93.48">То</span>
+<span data-start="93.76">ти</span>
+<span data-start="93.9">до</span>
+<span data-start="94.06">Сови</span>
+<span data-start="94.32">Зизи.</span>
+<span data-start="95.3">Вона</span>
+<span data-start="95.72">все</span>
+<span data-start="96.3">знає.</span>
+<span data-start="97.22">Навіть</span>
+<span data-start="97.66">де</span>
+<span data-start="97.82">я</span>
+<span data-start="97.98">загубив</span>
+<span data-start="98.62">свій</span>
+<span data-start="98.74">бутерброд</span>
+<span data-start="99.3">три</span>
+<span data-start="99.84">дні</span>
+<span data-start="100.04">тому.</span>
+<span data-start="100.34">—</span>
+<span data-start="101.34">Де?</span>
+<span data-start="102.74">—</span>
+<span data-start="104.02">У</span>
+<span data-start="104.6">тебе</span>
+<span data-start="104.92">в</span>
+<span data-start="104.92">рюкзаку...</span>
+<span data-start="106.42">Я</span>
+<span data-start="106.42">лізу</span>
+<span data-start="107.44">перевірити</span>
+<span data-start="107.44">—</span>
+<span data-start="107.76">і</span>
+<span data-start="107.96">правда!</span>
+<span data-start="108.22">ЯК</span>
+<span data-start="108.22">ВІН</span>
+<span data-start="108.22">ТУДИ</span>
+<span data-start="108.22">ПОТРАПИВ?!</span>
+<span data-start="109.96">Ми</span>
+<span data-start="110.58">з</span>
+<span data-start="110.72">Феліксом</span>
+<span data-start="111.34">йшли</span>
+<span data-start="111.74">стежкою</span>
+<span data-start="111.9">через</span>
+<span data-start="112.48">ліс.</span>
+<span data-start="113.7">Я</span>
+<span data-start="114.08">йшов,</span>
+<span data-start="114.84">він</span>
+<span data-start="115.1">підстрибував.</span>
+<span data-start="116.56">Виглядало</span>
+<span data-start="117.12">трохи</span>
+<span data-start="117.46">дивно,</span>
+<span data-start="118.14">бо</span>
+<span data-start="118.56">кроти,</span>
+<span data-start="119.08">виявляється,</span>
+<span data-start="120.42">стрибають</span>
+<span data-start="121.0">не</span>
+<span data-start="121.2">вгору,</span>
+<span data-start="121.34">а</span>
+<span data-start="122.12">вбік.</span>
+<span data-start="123.16">Тому</span>
+<span data-start="123.52">ми</span>
+<span data-start="123.74">трохи</span>
+<span data-start="124.08">збилися</span>
+<span data-start="124.58">з</span>
+<span data-start="124.7">дороги.</span>
+<span data-start="125.84">Але</span>
+<span data-start="126.32">зате</span>
+<span data-start="126.9">знайшли</span>
+<span data-start="127.72">білку-фокусницю</span>
+<span data-start="128.84">Лізу,</span>
+<span data-start="129.6">яка</span>
+<span data-start="130.18">тренувалася</span>
+<span data-start="131.02">ховати</span>
+<span data-start="131.8">жолуді</span>
+<span data-start="132.34">і</span>
+<span data-start="133.04">витягувати</span>
+<span data-start="133.66">їх...</span>
+<span data-start="134.34">з</span>
+<span data-start="134.34">капелюха!</span>
+<span data-start="135.98">—</span>
+<span data-start="136.54">Ви</span>
+<span data-start="137.12">випадково</span>
+<span data-start="137.28">не</span>
+<span data-start="137.28">бачили</span>
+<span data-start="137.82">мій</span>
+<span data-start="138.38">лівий</span>
+<span data-start="138.78">черевик?</span>
+<span data-start="139.52">—</span>
+<span data-start="139.88">питає</span>
+<span data-start="139.88">Ліза.</span>
+<span data-start="140.96">—</span>
+<span data-start="141.18">Я</span>
+<span data-start="141.4">його</span>
+<span data-start="141.4">зникла</span>
+<span data-start="141.86">вчора,</span>
+<span data-start="143.08">але</span>
+<span data-start="143.4">забула</span>
+<span data-start="143.4">як</span>
+<span data-start="144.26">зворотне</span>
+<span data-start="144.86">заклинання</span>
+<span data-start="145.46">звучить.</span>
+<span data-start="146.8">Черевик,</span>
+<span data-start="147.62">до</span>
+<span data-start="147.74">речі,</span>
+<span data-start="148.18">в</span>
+<span data-start="148.18">неї</span>
+<span data-start="148.38">на</span>
+<span data-start="148.52">голові.</span>
+<span data-start="149.0">Вона</span>
+<span data-start="149.76">про</span>
+<span data-start="149.98">це</span>
+<span data-start="150.1">дізналася</span>
+<span data-start="150.82">лише</span>
+<span data-start="151.14">за</span>
+<span data-start="151.32">десять</span>
+<span data-start="151.56">хвилин,</span>
+<span data-start="152.1">коли</span>
+<span data-start="152.24">він</span>
+<span data-start="152.54">впав</span>
+<span data-start="154.18">їй</span>
+<span data-start="154.38">на</span>
+<span data-start="154.5">носика.</span>
+<span data-start="156.04">—</span>
+<span data-start="156.76">Приєднуйся</span>
+<span data-start="156.76">до</span>
+<span data-start="156.94">нас,</span>
+<span data-start="157.26">—</span>
+<span data-start="157.74">пропоную</span>
+<span data-start="157.74">я.</span>
+<span data-start="158.54">—</span>
+<span data-start="159.0">Йдемо</span>
+<span data-start="159.24">до</span>
+<span data-start="159.24">Сови</span>
+<span data-start="159.24">Зизи!</span>
+<span data-start="160.84">—</span>
+<span data-start="161.3">Я</span>
+<span data-start="161.3">за!</span>
+<span data-start="162.02">Але</span>
+<span data-start="162.36">тільки</span>
+<span data-start="162.88">якщо</span>
+<span data-start="163.24">дозволите</span>
+<span data-start="163.92">мені</span>
+<span data-start="164.32">показувати</span>
+<span data-start="164.88">вам</span>
+<span data-start="165.12">фокуси</span>
+<span data-start="165.68">кожні</span>
+<span data-start="166.02">п'ять</span>
+<span data-start="166.22">хвилин.</span>
+<span data-start="167.18">Ми</span>
+<span data-start="167.46">погодилися.</span>
+<span data-start="168.78">Але</span>
+<span data-start="169.22">вже</span>
+<span data-start="169.22">через</span>
+<span data-start="169.56">дві</span>
+<span data-start="169.92">години</span>
+<span data-start="170.52">мої</span>
+<span data-start="172.02">вуха</span>
+<span data-start="172.6">трохи</span>
+<span data-start="173.66">диміли</span>
+<span data-start="174.8">—</span>
+<span data-start="175.38">бо</span>
+<span data-start="175.7">Ліза</span>
+<span data-start="176.56">намагалася</span>
+<span data-start="176.56">витягнути</span>
+<span data-start="177.54">з</span>
+<span data-start="177.76">них</span>
+<span data-start="177.92">морквину,</span>
+<span data-start="178.86">а</span>
+<span data-start="179.74">витягла</span>
+<span data-start="180.24">феєрверк.</span>
+<span data-start="182.04">Нарешті</span>
+<span data-start="182.92">ми</span>
+<span data-start="183.08">дібралися</span>
+<span data-start="183.78">до</span>
+<span data-start="183.94">старого</span>
+<span data-start="184.44">дерева.</span>
+<span data-start="185.64">Там</span>
+<span data-start="185.96">живе</span>
+<span data-start="186.38">Сова</span>
+<span data-start="186.38">Зиза.</span>
+<span data-start="187.78">Вона</span>
+<span data-start="187.92">носить</span>
+<span data-start="188.34">шалик</span>
+<span data-start="188.94">навіть</span>
+<span data-start="189.68">улітку</span>
+<span data-start="190.22">і</span>
+<span data-start="190.4">розмовляє</span>
+<span data-start="191.02">тільки</span>
+<span data-start="191.42">в</span>
+<span data-start="191.6">риму.</span>
+<span data-start="192.52">—</span>
+<span data-start="192.94">Ви</span>
+<span data-start="193.82">шукаєте</span>
+<span data-start="193.82">світлий</span>
+<span data-start="194.4">камінь?</span>
+<span data-start="196.86">—</span>
+<span data-start="197.44">Хм...</span>
+<span data-start="198.02">Це</span>
+<span data-start="198.6">буде</span>
+<span data-start="198.6">цілий</span>
+<span data-start="198.6">гамін.</span>
+<span data-start="199.28">—</span>
+<span data-start="200.34">Він</span>
+<span data-start="200.74">лежить,</span>
+<span data-start="200.98">де</span>
+<span data-start="200.98">річка</span>
+<span data-start="201.44">співає,</span>
+<span data-start="202.56">—</span>
+<span data-start="203.02">Де</span>
+<span data-start="203.02">лис</span>
+<span data-start="203.9">й</span>
+<span data-start="204.1">гусак</span>
+<span data-start="204.1">чай</span>
+<span data-start="205.06">п'ють</span>
+<span data-start="205.46">із</span>
+<span data-start="205.86">глека!</span>
+<span data-start="207.88">—</span>
+<span data-start="208.76">Ви...</span>
+<span data-start="209.44">впевнені?</span>
+<span data-start="209.72">—</span>
+<span data-start="210.74">питаю</span>
+<span data-start="210.74">я.</span>
+<span data-start="210.96">—</span>
+<span data-start="211.14">Це</span>
+<span data-start="212.0">не</span>
+<span data-start="212.0">трохи</span>
+<span data-start="212.0">дивно?</span>
+<span data-start="214.42">—</span>
+<span data-start="215.18">Все</span>
+<span data-start="215.38">в</span>
+<span data-start="215.38">цьому</span>
+<span data-start="215.64">лісі</span>
+<span data-start="216.14">трохи</span>
+<span data-start="216.52">дивно,</span>
+<span data-start="217.34">—</span>
+<span data-start="217.64">каже</span>
+<span data-start="217.64">Зиза.</span>
+<span data-start="218.62">—</span>
+<span data-start="219.08">Навіть</span>
+<span data-start="219.08">я.</span>
+<span data-start="220.14">Я</span>
+<span data-start="220.58">ж</span>
+<span data-start="221.12">насправді...</span>
+<span data-start="221.96">голуб.</span>
+<span data-start="222.66">І</span>
+<span data-start="223.28">злітає.</span>
+<span data-start="223.88">Але</span>
+<span data-start="224.76">це</span>
+<span data-start="225.02">таки</span>
+<span data-start="225.34">сова!</span>
+<span data-start="226.16">Просто</span>
+<span data-start="226.48">вона</span>
+<span data-start="226.86">іноді</span>
+<span data-start="227.36">жартує.</span>
+<span data-start="228.22">Часто.</span>
+<span data-start="229.2">І</span>
+<span data-start="229.6">надто</span>
+<span data-start="229.78">голосно.</span>
+<span data-start="231.5">Ми</span>
+<span data-start="231.92">вирушили</span>
+<span data-start="232.5">до</span>
+<span data-start="232.68">місця,</span>
+<span data-start="233.24">де</span>
+<span data-start="233.38">річка</span>
+<span data-start="233.8">співає.</span>
+<span data-start="235.22">Там</span>
+<span data-start="235.64">справді</span>
+<span data-start="236.54">сиділи</span>
+<span data-start="237.12">лис</span>
+<span data-start="237.76">і</span>
+<span data-start="237.86">гусак,</span>
+<span data-start="238.54">пили</span>
+<span data-start="238.74">чай</span>
+<span data-start="239.16">і</span>
+<span data-start="239.42">грали</span>
+<span data-start="239.7">в</span>
+<span data-start="239.9">шахи.</span>
+<span data-start="242.7">—</span>
+<span data-start="243.54">Якщо</span>
+<span data-start="244.0">хочеш</span>
+<span data-start="244.0">дізнатися,</span>
+<span data-start="244.74">де</span>
+<span data-start="244.88">камінь,</span>
+<span data-start="245.72">мусиш</span>
+<span data-start="246.24">нас</span>
+<span data-start="246.52">обіграти,</span>
+<span data-start="247.38">—</span>
+<span data-start="247.56">каже</span>
+<span data-start="247.56">Лис.</span>
+<span data-start="248.52">—</span>
+<span data-start="248.88">Або</span>
+<span data-start="249.6">розсмішити</span>
+<span data-start="249.6">Гусака.</span>
+<span data-start="250.86">Обіграти</span>
+<span data-start="251.58">я</span>
+<span data-start="251.86">їх</span>
+<span data-start="252.12">не</span>
+<span data-start="252.3">міг</span>
+<span data-start="253.04">—</span>
+<span data-start="253.2">у</span>
+<span data-start="253.2">шахи</span>
+<span data-start="253.56">я</span>
+<span data-start="253.68">грав</span>
+<span data-start="253.9">лише</span>
+<span data-start="254.26">один</span>
+<span data-start="254.52">раз,</span>
+<span data-start="255.02">і</span>
+<span data-start="255.14">то</span>
+<span data-start="255.38">з</span>
+<span data-start="255.64">дзеркалом.</span>
+<span data-start="257.02">Але</span>
+<span data-start="257.5">розсмішити</span>
+<span data-start="258.36">Гусака?</span>
+<span data-start="259.4">О,</span>
+<span data-start="260.18">це</span>
+<span data-start="260.36">я</span>
+<span data-start="260.58">можу!</span>
+<span data-start="261.8">Я</span>
+<span data-start="262.04">став</span>
+<span data-start="262.3">на</span>
+<span data-start="262.52">одній</span>
+<span data-start="262.82">лапі,</span>
+<span data-start="263.66">зробив</span>
+<span data-start="264.12">серйозне</span>
+<span data-start="264.86">обличчя</span>
+<span data-start="265.5">і</span>
+<span data-start="265.76">звернувся</span>
+<span data-start="266.3">до</span>
+<span data-start="266.42">Гусака:</span>
+<span data-start="267.8">—</span>
+<span data-start="268.16">А</span>
+<span data-start="268.28">ви</span>
+<span data-start="268.28">знали,</span>
+<span data-start="268.78">шановний</span>
+<span data-start="269.12">Гусаче,</span>
+<span data-start="270.4">що</span>
+<span data-start="270.54">якщо</span>
+<span data-start="271.04">єнот</span>
+<span data-start="271.24">понюхає</span>
+<span data-start="272.32">шкарпетку</span>
+<span data-start="273.46">вівторка,</span>
+<span data-start="274.64">то</span>
+<span data-start="274.86">він</span>
+<span data-start="275.02">може</span>
+<span data-start="275.46">перетворитися</span>
+<span data-start="276.52">на</span>
+<span data-start="276.66">літаючу</span>
+<span data-start="277.44">гарбузову</span>
+<span data-start="278.24">мишу?</span>
+<span data-start="279.74">Гусак</span>
+<span data-start="280.28">закліпав</span>
+<span data-start="280.84">очима,</span>
+<span data-start="281.82">а</span>
+<span data-start="282.04">потім</span>
+<span data-start="282.36">подивився</span>
+<span data-start="282.82">на</span>
+<span data-start="282.94">Лиса.</span>
+<span data-start="283.8">Той</span>
+<span data-start="284.08">стримував</span>
+<span data-start="284.72">сміх,</span>
+<span data-start="285.24">але</span>
+<span data-start="285.46">не</span>
+<span data-start="285.82">дуже</span>
+<span data-start="286.22">успішно.</span>
+<span data-start="287.64">Раптом</span>
+<span data-start="288.4">Гусак</span>
+<span data-start="288.8">почав</span>
+<span data-start="289.54">хихотіти,</span>
+<span data-start="290.94">хихотіти</span>
+<span data-start="291.86">все</span>
+<span data-start="292.04">голосніше,</span>
+<span data-start="292.68">поки</span>
+<span data-start="292.98">не</span>
+<span data-start="293.1">впав</span>
+<span data-start="293.34">на</span>
+<span data-start="293.46">траву,</span>
+<span data-start="293.9">тримаючись</span>
+<span data-start="294.48">за</span>
+<span data-start="294.66">живіт!</span>
+<span data-start="295.6">Лис</span>
+<span data-start="296.12">аплодував,</span>
+<span data-start="297.44">червоний</span>
+<span data-start="298.4">від</span>
+<span data-start="298.56">сміху.</span>
+<span data-start="299.64">І</span>
+<span data-start="299.84">ми</span>
+<span data-start="299.84">отримали</span>
+<span data-start="300.4">підказку:</span>
+<span data-start="302.24">«Камінь</span>
+<span data-start="303.16">у</span>
+<span data-start="303.28">печері</span>
+<span data-start="303.96">Дзвінкої</span>
+<span data-start="304.26">Жаби!»</span>
+<span data-start="305.48">Отже,</span>
+<span data-start="306.98">це</span>
+<span data-start="307.16">ще</span>
+<span data-start="308.5">не</span>
+<span data-start="308.74">кінець</span>
+<span data-start="309.38">пригод.</span>
+<span data-start="310.46">Але</span>
+<span data-start="310.9">сьогодні</span>
+<span data-start="311.5">я</span>
+<span data-start="311.64">втомлений.</span>
+<span data-start="313.12">Ми</span>
+<span data-start="313.26">лягли</span>
+<span data-start="313.66">спати</span>
+<span data-start="314.24">просто</span>
+<span data-start="314.78">під</span>
+<span data-start="315.16">зірками.</span>
+<span data-start="316.62">Фелікс</span>
+<span data-start="317.2">хропів.</span>
+<span data-start="318.34">Ліза</span>
+<span data-start="318.68">дихала</span>
+<span data-start="319.24">в</span>
+<span data-start="319.44">ритмі</span>
+<span data-start="319.82">чарівних</span>
+<span data-start="320.32">заклять.</span>
+<span data-start="321.48">А</span>
+<span data-start="321.62">я</span>
+<span data-start="321.8">думаю:</span>
+<span data-start="323.5">«Як</span>
+<span data-start="323.86">добре,</span>
+<span data-start="324.86">що</span>
+<span data-start="325.2">я</span>
+<span data-start="325.38">не</span>
+<span data-start="325.52">залишився</span>
+<span data-start="326.22">вдома.</span>
+<span data-start="327.3">Хоча...</span>
+<span data-start="327.88">печиво</span>
+<span data-start="328.9">закінчилося.</span>
+<span data-start="330.92">Це</span>
+<span data-start="331.3">тривожно».</span>
+  </div>
+
+  <script>
+// Додайте цей код до існуючого скрипту
+const darkBtn = document.getElementById('darkBtn');
+const lightBtn = document.getElementById('lightBtn');
+const body = document.body;
+
+// Перевірка збереженої теми
+if (localStorage.getItem('theme') === 'dark') {
+  body.classList.add('dark-mode');
+}
+
+darkBtn.addEventListener('click', () => {
+  body.classList.add('dark-mode');
+  localStorage.setItem('theme', 'dark');
+});
+
+lightBtn.addEventListener('click', () => {
+  body.classList.remove('dark-mode');
+  localStorage.setItem('theme', 'light');
+});
+    const audio = document.getElementById('audioPlayer');
+    const textSpans = document.querySelectorAll('#story span');
+
+    function playFromTime(startTime) {
+      audio.currentTime = startTime;
+      audio.play();
+    }
+
+    audio.addEventListener('timeupdate', () => {
+      const currentTime = audio.currentTime;
+      textSpans.forEach(span => {
+        const startTime = parseFloat(span.getAttribute('data-start'));
+        const duration = 1.2;
+        if (currentTime >= startTime && currentTime < startTime + duration) {
+          span.classList.add('highlight');
+        } else {
+          span.classList.remove('highlight');
+        }
+      });
+    });
+
+    audio.addEventListener('ended', () => {
+      textSpans.forEach(span => span.classList.remove('highlight'));
+    });
+
+    textSpans.forEach(span => {
+      const startTime = parseFloat(span.getAttribute('data-start'));
+      span.addEventListener('click', () => {
+        textSpans.forEach(s => s.classList.remove('highlight'));
+        span.classList.add('highlight');
+        playFromTime(startTime);
+      });
+      span.addEventListener('touchstart', (e) => {
+        e.preventDefault();
+        textSpans.forEach(s => s.classList.remove('highlight'));
+        span.classList.add('highlight');
+        playFromTime(startTime);
+      });
+    });
+// Зміна розміру зображення
+let isExpanded = false;
+function toggleImageSize() {
+  const img = document.getElementById("storybookImage");
+  img.style.maxWidth = !isExpanded ? "100%" : "25%";
+  isExpanded = !isExpanded;
+}
+  </script>
+<div class="page-navigation">
+  <a href="enot_day1.html">1</a>
+  <a href="enot_day2.html">2</a>
+  <a href="enot_day3.html">3</a>
+  <span>…</span>
+  <a href="enot_day10.html">10</a>
+</div>
+</body>
+</html>
