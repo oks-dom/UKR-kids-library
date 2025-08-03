@@ -25,14 +25,13 @@
     }
     .section-header h2 {
       margin: 10px 0;
-      text-align: right;
-      flex-grow: 1;
+      text-align: left;
     }
     .speaker {
       cursor: pointer;
       font-size: 20px;
       color: #007bff;
-      margin-right: 10px;
+      margin-left: 10px;
     }
     .subtopics {
       display: none;
@@ -106,6 +105,9 @@
       const header = document.createElement('div');
       header.className = 'section-header';
 
+      const title = document.createElement('h2');
+      title.textContent = section.title;
+
       const speaker = document.createElement('span');
       speaker.className = 'speaker';
       speaker.textContent = '🔊';
@@ -115,11 +117,8 @@
         audio.play();
       };
 
-      const title = document.createElement('h2');
-      title.textContent = section.title;
-
-      header.appendChild(speaker);
       header.appendChild(title);
+      header.appendChild(speaker);
 
       const subList = document.createElement('ul');
       subList.className = 'subtopics';
