@@ -1,160 +1,142 @@
 <!DOCTYPE html>
 <html lang="uk">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Дитяча бібліотека</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            min-height: 100vh;
-            background-color: #f9f9f9;
-        }
-        
-        /* Стилі для головного контейнера */
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        
-        /* Стилі для меню */
-        .menu {
-            margin: 30px auto;
-            max-width: 600px;
-        }
-        
-        .genre {
-            margin-bottom: 15px;
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            overflow: hidden;
-        }
-        
-        .genre-title {
-            font-weight: bold;
-            padding: 12px 15px;
-            background-color: #81d4fa;
-            color: white;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-        
-        .genre-title:hover {
-            background-color: #4fc3f7;
-        }
-        
-        .books-list {
-            display: none;
-            padding: 10px 15px;
-            background-color: white;
-        }
-        
-        .book-link {
-            display: block;
-            padding: 8px 5px;
-            color: #333;
-            text-decoration: none;
-            border-bottom: 1px solid #eee;
-            transition: background-color 0.2s;
-        }
-        
-        .book-link:last-child {
-            border-bottom: none;
-        }
-        
-        .book-link:hover {
-            background-color: #f5f5f5;
-        }
-        
-        /* Стилі для заголовка та опису */
-        .header {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-        
-        .header h1 {
-            color: #2e7d32;
-            margin-bottom: 10px;
-        }
-        
-        /* Адаптація для мобільних пристроїв */
-        @media (max-width: 600px) {
-            .container {
-                padding: 15px;
-            }
-            
-            .menu {
-                margin: 20px auto;
-            }
-            
-            .genre-title {
-                padding: 10px 12px;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kids Library</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 20px;
+      background: #f5f5f5;
+    }
+    .section {
+      background: white;
+      margin: 10px 0;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      padding: 10px 20px;
+    }
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+    }
+    .section-header h2 {
+      margin: 10px 0;
+      text-align: right;
+      flex-grow: 1;
+    }
+    .speaker {
+      cursor: pointer;
+      font-size: 20px;
+      color: #007bff;
+      margin-right: 10px;
+    }
+    .subtopics {
+      display: none;
+      padding-left: 20px;
+      margin-top: 10px;
+    }
+    .subtopics li {
+      margin: 5px 0;
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <!-- Заголовок -->
-        <div class="header">
-            <h1>Дитяча бібліотека</h1>
-            <p>Оберіть книгу зі списку нижче</p>
-        </div>
-        
-        <!-- Меню жанрів -->
+  <h1>Kids Library</h1>
+  <div id="sections"></div>
 
+  <script>
+    const sections = [
+      {
+        title: "Казки",
+        audio: "Kazky_button.mp3",
+        subtopics: ["Єнот", "Лев", "Макс", "Час", "Подорожі емоцій"]
+      },
+      {
+        title: "Психологія",
+        audio: "Psykhologia_button.mp3",
+        subtopics: ["Емоції", "Довіра", "Межі", "Гнів", "Дружба"]
+      },
+      {
+        title: "Здоров’я",
+        audio: "Zdorovia_button.mp3",
+        subtopics: ["Вітаміни", "Мозок", "Сон", "Рух"]
+      },
+      {
+        title: "Політика і Світ",
+        audio: "Polityka_button.mp3",
+        subtopics: ["Новини", "Конфлікти", "Лідери", "Держава"]
+      },
+      {
+        title: "Наука",
+        audio: "Nauka_button.mp3",
+        subtopics: ["Фізика", "Мікросвіт", "Сили", "Біологія"]
+      },
+      {
+        title: "Історія",
+        audio: "Istoriia_button.mp3",
+        subtopics: ["Україна", "Світ", "Історії без підручників"]
+      },
+      {
+        title: "Спорт",
+        audio: "Sport_button.mp3",
+        subtopics: ["Команди", "Тактики", "Чемпіони", "Футбол"]
+      },
+      {
+        title: "Бізнес і Гроші",
+        audio: "Biznes_button.mp3",
+        subtopics: ["Магазин", "Банк", "Своя справа"]
+      },
+      {
+        title: "Проєкти і Ідеї",
+        audio: "Proekty_button.mp3",
+        subtopics: ["Планування", "Успіх", "Створення", "Натхнення"]
+      }
+    ];
 
-        <div class="menu">
+    const container = document.getElementById('sections');
 
-<div class="genre">
-  <div class="genre-title" style="display: flex; justify-content: space-between; align-items: center;">
-    <span style="text-align: left;">Казки</span>
-    <span onclick="document.getElementById('kazky-audio').play()" style="cursor: pointer;">🔊</span>
-  </div>
+    sections.forEach(section => {
+      const sectionDiv = document.createElement('div');
+      sectionDiv.className = 'section';
 
-  <div class="books-list">
-    <a href="books/fairy_tale1.html" class="book-link">Казка про єнота</a>
-    <a href="books/fairy_tale2.html" class="book-link">Казка про дракона</a>
-  </div>
-</div>
+      const header = document.createElement('div');
+      header.className = 'section-header';
 
-<audio id="kazky-audio" src="Kazky_button.m4a" preload="auto" playsinline></audio>
+      const speaker = document.createElement('span');
+      speaker.className = 'speaker';
+      speaker.textContent = '🔊';
+      speaker.onclick = (e) => {
+        e.stopPropagation();
+        const audio = new Audio(section.audio);
+        audio.play();
+      };
 
-<audio id="kazky-audio" src="Kazky_button.m4a"></audio>
+      const title = document.createElement('h2');
+      title.textContent = section.title;
 
-  
-            
-            <div class="genre">
-                <div class="genre-title">Наука</div>
-                <div class="books-list">
-                    <a href="books/science1.html" class="book-link">Цікава фізика</a>
-                    <a href="books/science2.html" class="book-link">Світ тварин</a>
-                </div>
-            </div>
-            
-            <div class="genre">
-                <div class="genre-title">Спорт</div>
-                <div class="books-list">
-                    <a href="books/sport1.html" class="book-link">Футбол</a>
-                    <a href="books/sport2.html" class="book-link">Баскетбол</a>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <script>
-        // Розгортання списку книжок за жанром
-        const genreTitles = document.querySelectorAll('.genre-title');
-        genreTitles.forEach(title => {
-            title.addEventListener('click', function() {
-                const list = this.nextElementSibling;
-                list.style.display = list.style.display === 'block' ? 'none' : 'block';
-            });
-        });
-    </script>
+      header.appendChild(speaker);
+      header.appendChild(title);
+
+      const subList = document.createElement('ul');
+      subList.className = 'subtopics';
+      section.subtopics.forEach(sub => {
+        const li = document.createElement('li');
+        li.textContent = sub;
+        subList.appendChild(li);
+      });
+
+      header.addEventListener('click', () => {
+        subList.style.display = subList.style.display === 'none' ? 'block' : 'none';
+      });
+
+      sectionDiv.appendChild(header);
+      sectionDiv.appendChild(subList);
+      container.appendChild(sectionDiv);
+    });
+  </script>
 </body>
 </html>
