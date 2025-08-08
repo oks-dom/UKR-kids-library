@@ -1,72 +1,274 @@
 <!DOCTYPE html>
 <html lang="uk">
 <head>
-    <!-- Всі стилі та метатеги залишаються без змін -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Дитяча бібліотека</title>
     <style>
-        /* Всі попередні стилі залишаються тут */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            background-color: #f9f9f9;
+        }
         
-        /* Додано стиль для вирівнювання спікера в рядках */
-        .book-link {
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .menu {
+            margin: 30px auto;
+            max-width: 600px;
+        }
+        
+        .genre {
+            margin-bottom: 15px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .genre-title {
+            font-weight: bold;
+            padding: 12px 15px;
+            background-color: #81d4fa;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-        .book-link-text {
-            flex-grow: 1;
+        
+        .genre-title:hover {
+            background-color: #4fc3f7;
+        }
+        
+        .books-list {
+            display: none;
+            padding: 10px 15px;
+            background-color: white;
+        }
+        
+        .book-link {
+            display: block;
+            padding: 8px 5px;
+            color: #333;
+            text-decoration: none;
+            border-bottom: 1px solid #eee;
+            transition: background-color 0.2s;
+        }
+        
+        .book-link:last-child {
+            border-bottom: none;
+        }
+        
+        .book-link:hover {
+            background-color: #f5f5f5;
+        }
+        
+        .speaker-icon {
+            cursor: pointer;
+            margin-left: 10px;
+            font-size: 1.2em;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .header h1 {
+            color: #2e7d32;
+            margin-bottom: 10px;
+        }
+        
+        @media (max-width: 600px) {
+            .container {
+                padding: 15px;
+            }
+            
+            .menu {
+                margin: 20px auto;
+            }
+            
+            .genre-title {
+                padding: 10px 12px;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- Заголовок та інші елементи залишаються без змін -->
+        <div class="header">
+            <h1>Дитяча бібліотека</h1>
+            <p>Оберіть книгу зі списку нижче</p>
+        </div>
         
         <div class="menu">
-            <!-- Приклад для розділу "Казки та Пригоди" -->
+            <!-- Казки та Пригоди -->
             <div class="genre">
                 <div class="genre-title">
                     <span>🧚 Казки та Пригоди</span>
                     <span class="speaker-icon" onclick="playAudio('Kazky_button.mp3')">🔊</span>
                 </div>
                 <div class="books-list">
-                    <a href="1_Enot_Story.html" class="book-link">
-                        <span class="book-link-text">Казка про Єнота</span>
-                        <span class="speaker-icon" onclick="event.stopPropagation(); playAudio('1_Enot_Story_button.mp3')">🔊</span>
-                    </a>
-                    <a href="2_Max_Adventure.html" class="book-link">
-                        <span class="book-link-text">Пригоди Макса</span>
-                        <span class="speaker-icon" onclick="event.stopPropagation(); playAudio('2_Max_Adventure_button.mp3')">🔊</span>
-                    </a>
-                    <!-- Аналогічно для інших рядків у всіх розділах -->
+                    <a href="1_Enot_Story.html" class="book-link">Казка про Єнота</a>
+                    <a href="2_Max_Adventure.html" class="book-link">Пригоди Макса</a>
+                    <a href="3_Lion_Tale.html" class="book-link">Лев і його друзі</a>
+                    <a href="4_Time_Journey.html" class="book-link">Подорож у Час</a>
+                    <a href="5_Emotions_Tale.html" class="book-link">Казка про Емоції</a>
                 </div>
             </div>
 
-            <!-- Інші розділи (Психологія, Здоров'я тощо) оформлюються аналогічно -->
+            <!-- Психологія -->
+            <div class="genre">
+                <div class="genre-title">
+                    <span>🧠 Психологія</span>
+                    <span class="speaker-icon" onclick="playAudio('Psyhology_button.mp3')">🔊</span>
+                </div>
+                <div class="books-list">
+                    <a href="6_Emotions_Guide.html" class="book-link">Як розуміти свої емоції</a>
+                    <a href="7_Trust_Story.html" class="book-link">Історія про Довіру</a>
+                    <a href="8_Boundaries_Tale.html" class="book-link">Межі та Правила</a>
+                    <a href="9_Anger_Management.html" class="book-link">Як впоратись з гнівом</a>
+                    <a href="10_Friendship_Story.html" class="book-link">Справжня Дружба</a>
+                </div>
+            </div>
+
+            <!-- Здоров'я -->
+            <div class="genre">
+                <div class="genre-title">
+                    <span>💪 Здоров'я</span>
+                    <span class="speaker-icon" onclick="playAudio('Health_button.mp3')">🔊</span>
+                </div>
+                <div class="books-list">
+                    <a href="11_Vitamins_Story.html" class="book-link">Чому важливі вітаміни</a>
+                    <a href="12_Sleep_Importance.html" class="book-link">Чарівна сила сну</a>
+                    <a href="13_Movement_Guide.html" class="book-link">Рух - це здоров'я</a>
+                    <a href="14_Brain_Work.html" class="book-link">Як працює наш мозок</a>
+                    <a href="15_Healthy_Food.html" class="book-link">Здорова їжа - суперсила</a>
+                </div>
+            </div>
+
+            <!-- Політика і Світ -->
+            <div class="genre">
+                <div class="genre-title">
+                    <span>🌍 Політика і Світ</span>
+                    <span class="speaker-icon" onclick="playAudio('Politics_button.mp3')">🔊</span>
+                </div>
+                <div class="books-list">
+                    <a href="16_What_Are_News.html" class="book-link">Що таке новини</a>
+                    <a href="17_Leaders_Story.html" class="book-link">Хто такі лідери</a>
+                    <a href="18_Laws_For_Kids.html" class="book-link">Закони для дітей</a>
+                    <a href="19_Peace_Story.html" class="book-link">Війна і Мир</a>
+                </div>
+            </div>
+
+            <!-- Наука -->
+            <div class="genre">
+                <div class="genre-title">
+                    <span>🔬 Наука</span>
+                    <span class="speaker-icon" onclick="playAudio('Science_button.mp3')">🔊</span>
+                </div>
+                <div class="books-list">
+                    <a href="20_Physics_For_Kids.html" class="book-link">Цікава фізика</a>
+                    <a href="21_Micro_World.html" class="book-link">Дивовижний мікросвіт</a>
+                    <a href="22_Biology_Basics.html" class="book-link">Основи біології</a>
+                    <a href="23_Space_Adventure.html" class="book-link">Подорож у Космос</a>
+                    <a href="24_Technology_Today.html" class="book-link">Сучасні технології</a>
+                </div>
+            </div>
+
+            <!-- Історія -->
+            <div class="genre">
+                <div class="genre-title">
+                    <span>🏺 Історія</span>
+                    <span class="speaker-icon" onclick="playAudio('History_button.mp3')">🔊</span>
+                </div>
+                <div class="books-list">
+                    <a href="25_Ukraine_History.html" class="book-link">Історія України</a>
+                    <a href="26_World_Events.html" class="book-link">Важливі світові події</a>
+                    <a href="27_Living_History.html" class="book-link">Живі історії</a>
+                </div>
+            </div>
+
+            <!-- Спорт -->
+            <div class="genre">
+                <div class="genre-title">
+                    <span>⚽ Спорт</span>
+                    <span class="speaker-icon" onclick="playAudio('Sport_button.mp3')">🔊</span>
+                </div>
+                <div class="books-list">
+                    <a href="28_Champions_Story.html" class="book-link">Історії чемпіонів</a>
+                    <a href="29_Team_Work.html" class="book-link">Командна гра</a>
+                    <a href="30_Sport_Tactics.html" class="book-link">Спортивні тактики</a>
+                    <a href="31_Football_Basics.html" class="book-link">Основи футболу</a>
+                </div>
+            </div>
+
+            <!-- Бізнес і Гроші -->
+            <div class="genre">
+                <div class="genre-title">
+                    <span>💰 Бізнес і Гроші</span>
+                    <span class="speaker-icon" onclick="playAudio('Business_button.mp3')">🔊</span>
+                </div>
+                <div class="books-list">
+                    <a href="32_Money_Story.html" class="book-link">Що таке гроші</a>
+                    <a href="33_Bank_Work.html" class="book-link">Як працює банк</a>
+                    <a href="34_My_Business.html" class="book-link">Моя перша справа</a>
+                    <a href="35_Advertising_Guide.html" class="book-link">Що таке реклама</a>
+                </div>
+            </div>
+
+            <!-- Проєкти та Ідеї -->
+            <div class="genre">
+                <div class="genre-title">
+                    <span>🛠️ Проєкти та Ідеї</span>
+                    <span class="speaker-icon" onclick="playAudio('Projects_button.mp3')">🔊</span>
+                </div>
+                <div class="books-list">
+                    <a href="36_Create_Something.html" class="book-link">Як створити щось нове</a>
+                    <a href="37_Inspiration_Story.html" class="book-link">Історії натхнення</a>
+                    <a href="38_Planning_Guide.html" class="book-link">Основи планування</a>
+                    <a href="39_Success_Story.html" class="book-link">Що таке успіх</a>
+                </div>
+            </div>
         </div>
     </div>
 
     <audio id="audio-player"></audio>
 
     <script>
-        // Функція playAudio залишається без змін
+        // Розгортання списку книжок за жанром
+        const genreTitles = document.querySelectorAll('.genre-title');
+        genreTitles.forEach(title => {
+            title.addEventListener('click', function(e) {
+                // Якщо клікнули на іконку спікера - не розгортаємо меню
+                if (!e.target.classList.contains('speaker-icon')) {
+                    const list = this.nextElementSibling;
+                    list.style.display = list.style.display === 'block' ? 'none' : 'block';
+                }
+            });
+        });
+
+        // Функція для відтворення аудіо
         function playAudio(audioFile) {
             const audioPlayer = document.getElementById('audio-player');
             audioPlayer.src = audioFile;
             audioPlayer.play();
+            
+            // Зупиняємо попереднє аудіо при кліку на нову кнопку
             audioPlayer.addEventListener('play', function() {
                 document.querySelectorAll('audio').forEach(a => {
                     if (a !== audioPlayer) a.pause();
                 });
             });
         }
-
-        // Додано обробник для запобігання запуску аудіо при кліку на посилання
-        document.querySelectorAll('.book-link').forEach(link => {
-            link.addEventListener('click', function(e) {
-                if (e.target.classList.contains('speaker-icon')) {
-                    e.preventDefault(); // Забороняємо перехід по посиланню
-                }
-            });
-        });
     </script>
 </body>
 </html>
