@@ -1,42 +1,11 @@
+
 <!DOCTYPE html>
 <html lang="uk">
 <head>
   <meta charset="UTF-8" />
-  <title>Казки українською для дітей</title>
+  <title>Казка про Єнота. Вступ</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-
-
-.page-navigation {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  background: #fff;
-  border-top: 1px solid #ccc;
-  text-align: center;
-  padding: 10px 0;
-  z-index: 1001;
-}
-
-.page-navigation a {
-  display: inline-block;
-  margin: 0 5px;
-  padding: 6px 12px;
-  background-color: #eee;
-  border-radius: 5px;
-  text-decoration: none;
-  color: #333;
-  font-weight: bold;
-  transition: background-color 0.3s;
-}
-
-.page-navigation a:hover {
-  background-color: #ddd;
-}
-
-
-
-    /* Ваші початкові стилі */
     body {
       font-family: Arial, sans-serif;
       padding: 2rem;
@@ -52,13 +21,9 @@
       background-color: #FFF59D;
       transition: background-color 0.3s;
     }
-    .hover-highlight {
-      background-color: #E0E0E0;
-      transition: background-color 0.3s;
+    #story {
+      padding-bottom: 70px;
     }
-#story {
-  padding-bottom: 70px;
-}
     #story span {
       display: inline-block;
       margin: 2px 0;
@@ -74,9 +39,7 @@
       z-index: 1000;
       border-bottom: 1px solid #ccc;
     }
-    
-    /* Додаткові стилі для темної теми */
-    body.dark-mode {
+    .dark-mode {
       background-color: #121212;
       color: #f0f0f0;
     }
@@ -99,53 +62,85 @@
       border-radius: 50%;
       border: none;
       cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: transparent;
       font-size: 24px;
-      transition: transform 0.3s;
-    }
-    .theme-btn:hover {
-      transform: scale(1.1);
     }
     #darkBtn {
-      color: #121212;
       background-color: #f0f0f0;
     }
     #lightBtn {
-      color: #FFD700;
       background-color: transparent;
     }
-    .dark-mode #lightBtn {
-      background-color: #333;
+    .pagination {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 8px 0;
+      background: #fff;
+      border-top: 1px solid #ccc;
+      position: fixed;
+      left: 0;
+      bottom: 0;
+      width: 100vw;
+      z-index: 100;
+    }
+    .pages {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      max-width: 80vw;
+      scrollbar-width: none;
+    }
+    .pages::-webkit-scrollbar {
+      display: none;
+    }
+    .pagination a, .pagination button {
+      min-width: 40px;
+      min-height: 40px;
+      font-size: 1.2em;
+      background: #f5f5f5;
+      border: none;
+      color: #888;
+      border-radius: 8px;
+      text-align: center;
+      line-height: 40px;
+      cursor: pointer;
+    }
+    .pagination a:hover, .pagination button:hover {
+      background: #e6f0fa;
+    }
+    .pagination a.home {
+      font-size: 1.3em;
+      border-radius: 50%;
+    }
+    .pagination button.arrow {
+      background: #4a90e2;
+      color: #fff;
+      font-weight: bold;
+    }
+    .pagination button:disabled {
+      background: #ddd;
+      color: #aaa;
+      cursor: not-allowed;
     }
   </style>
 </head>
-<body>
-  <!-- Кнопки теми -->
+<body class="">
   <div class="theme-toggle">
-    <button id="darkBtn" class="theme-btn" title="Нічний режим">🌙</button>
-    <button id="lightBtn" class="theme-btn" title="Денний режим">☀️</button>
+    <button id="darkBtn" class="theme-btn">🌙</button>
+    <button id="lightBtn" class="theme-btn">☀️</button>
   </div>
-  
+
   <div class="audio-wrapper">
     <audio id="audioPlayer" controls>
-      <source src="https://dn721804.ca.archive.org/0/items/enot1_202507/enot1.m4a" type="audio/mp4">
-      Ваш браузер не підтримує аудіо.
+      <source src="https://ia601502.us.archive.org/21/items/enot_introV4/enot_introV4.mp3" type="audio/mp3">
     </audio>
   </div>
-  <h1>Чарівна казка про Єнота. День 1</h1>
+
+  <h1>Казка про Єнота. Вступ</h1>
   <div id="story">
-<img id="storybookImage" 
-     src="https://raw.githubusercontent.com/oks-dom/UKR-kids-library/main/images/enotKazka.png"
-     alt="Казковий ліс із єнотом"
-     style="max-width: 25%; height: auto; border-radius: 12px; cursor: pointer; transition: max-width 0.5s ease;" 
-     onclick="toggleImageSize()">
-    <!-- Тут буде оновлений текст з таймінгом -->
-    <!-- Вставлено з story_with_timings.html із виправленням помилок -->
-    
-   <span data-start="0.0">Одного</span>
+    <img id="storyImage" src="https://archive.org/download/intro_enot/intro_enot.png" onclick="toggleImageSize()" style="max-width: 25%; cursor: pointer;">
+ <span data-start="0.0">Одного</span>
 <span data-start="1.64">разу</span>
 <span data-start="2.14">в</span>
 <span data-start="2.28">чарівному</span>
@@ -719,74 +714,9 @@
 <span data-start="331.3">тривожно».</span>
   </div>
 
-  <script>
-// Додайте цей код до існуючого скрипту
-const darkBtn = document.getElementById('darkBtn');
-const lightBtn = document.getElementById('lightBtn');
-const body = document.body;
 
-// Перевірка збереженої теми
-if (localStorage.getItem('theme') === 'dark') {
-  body.classList.add('dark-mode');
-}
 
-darkBtn.addEventListener('click', () => {
-  body.classList.add('dark-mode');
-  localStorage.setItem('theme', 'dark');
-});
-
-lightBtn.addEventListener('click', () => {
-  body.classList.remove('dark-mode');
-  localStorage.setItem('theme', 'light');
-});
-    const audio = document.getElementById('audioPlayer');
-    const textSpans = document.querySelectorAll('#story span');
-
-    function playFromTime(startTime) {
-      audio.currentTime = startTime;
-      audio.play();
-    }
-
-    audio.addEventListener('timeupdate', () => {
-      const currentTime = audio.currentTime;
-      textSpans.forEach(span => {
-        const startTime = parseFloat(span.getAttribute('data-start'));
-        const duration = 1.2;
-        if (currentTime >= startTime && currentTime < startTime + duration) {
-          span.classList.add('highlight');
-        } else {
-          span.classList.remove('highlight');
-        }
-      });
-    });
-
-    audio.addEventListener('ended', () => {
-      textSpans.forEach(span => span.classList.remove('highlight'));
-    });
-
-    textSpans.forEach(span => {
-      const startTime = parseFloat(span.getAttribute('data-start'));
-      span.addEventListener('click', () => {
-        textSpans.forEach(s => s.classList.remove('highlight'));
-        span.classList.add('highlight');
-        playFromTime(startTime);
-      });
-      span.addEventListener('touchstart', (e) => {
-        e.preventDefault();
-        textSpans.forEach(s => s.classList.remove('highlight'));
-        span.classList.add('highlight');
-        playFromTime(startTime);
-      });
-    });
-// Зміна розміру зображення
-let isExpanded = false;
-function toggleImageSize() {
-  const img = document.getElementById("storybookImage");
-  img.style.maxWidth = !isExpanded ? "100%" : "25%";
-  isExpanded = !isExpanded;
-}
-  </script>
-<div class="pagination">
+  <div class="pagination">
   <a href="../index.html" class="home">🏠</a>
   <button class="arrow prev" disabled>&lt;</button>
   <div class="pages">
@@ -800,6 +730,85 @@ function toggleImageSize() {
     <a href="enot_day10.html">10</a>
   </div>
 
+    <button class="arrow next">&gt;</button>
+  </div>
+
+  <script>
+    // Тема
+    const darkBtn = document.getElementById('darkBtn');
+    const lightBtn = document.getElementById('lightBtn');
+    const body = document.body;
+
+    if (localStorage.getItem('theme') === 'dark') {
+      body.classList.add('dark-mode');
+    }
+
+    darkBtn.addEventListener('click', () => {
+      body.classList.add('dark-mode');
+      localStorage.setItem('theme', 'dark');
+    });
+
+    lightBtn.addEventListener('click', () => {
+      body.classList.remove('dark-mode');
+      localStorage.setItem('theme', 'light');
+    });
+
+    // Аудіо та підсвічування
+    const audio = document.getElementById('audioPlayer');
+    const textSpans = document.querySelectorAll('#story span');
+
+    function playFromTime(startTime) {
+      audio.currentTime = startTime;
+      audio.play();
+    }
+
+    audio.addEventListener('timeupdate', () => {
+      const currentTime = audio.currentTime;
+      textSpans.forEach(span => {
+        const startTime = parseFloat(span.getAttribute('data-start'));
+        const endTime = startTime + 0.5; // Короткий час підсвічування
+        if (currentTime >= startTime && currentTime < endTime) {
+          span.classList.add('highlight');
+        } else {
+          span.classList.remove('highlight');
+        }
+      });
+    });
+
+    textSpans.forEach(span => {
+      const startTime = parseFloat(span.getAttribute('data-start'));
+      span.addEventListener('click', () => {
+        playFromTime(startTime);
+      });
+      span.addEventListener('touchstart', (e) => {
+        e.preventDefault();
+        playFromTime(startTime);
+      });
+    });
+
+    // Зображення
+    function toggleImageSize() {
+      const img = document.getElementById("storyImage");
+      img.style.maxWidth = img.style.maxWidth === "100%" ? "25%" : "100%";
+    }
+
+    // Пагінація
+    const pages = document.querySelector('.pages');
+    const prevBtn = document.querySelector('.arrow.prev');
+    const nextBtn = document.querySelector('.arrow.next');
+
+    prevBtn.onclick = () => pages.scrollBy({left: -80, behavior: 'smooth'});
+    nextBtn.onclick = () => pages.scrollBy({left: 80, behavior: 'smooth'});
+
+    pages.addEventListener('scroll', () => {
+      prevBtn.disabled = pages.scrollLeft <= 0;
+      nextBtn.disabled = pages.scrollLeft + pages.offsetWidth >= pages.scrollWidth;
+    });
+  </script>
 </body>
+
 </html>
+
+
+
 
